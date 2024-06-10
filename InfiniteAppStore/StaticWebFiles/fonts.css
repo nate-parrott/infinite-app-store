@@ -1,0 +1,18 @@
+/* Serve MS Sans Serif Bold.ttf  and MS Sans Serif.ttf (which are in this same dir) as webfonts with name "RetroFont" */
+
+@font-face {
+    font-family: "RetroFont";
+    src: url("MS_Sans_Serif_Bold.ttf") format("truetype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "RetroFont";
+    src: url("MS_Sans_Serif.ttf") format("truetype");
+    font-weight: normal;
+}
+
+/*
+Import this file in your CSS file with @import url("http://localhost:50082/static/fonts.css");
+Then use font-family: "RetroFont" in your CSS to use the font.
+*/
