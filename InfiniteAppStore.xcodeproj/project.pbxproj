@@ -37,6 +37,8 @@
 		5FD58E472C1662C30044E094 /* StaticWebFiles in Resources */ = {isa = PBXBuildFile; fileRef = 5FD58E462C1662C30044E094 /* StaticWebFiles */; };
 		5FD58E492C167C8F0044E094 /* CSS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD58E482C167C8F0044E094 /* CSS.swift */; };
 		5FD58E4B2C1683AA0044E094 /* FloatingSwiftUIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD58E4A2C1683AA0044E094 /* FloatingSwiftUIWindow.swift */; };
+		5FD58E4D2C17E7760044E094 /* StatusMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD58E4C2C17E7760044E094 /* StatusMenu.swift */; };
+		5FD58E4F2C17ED930044E094 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD58E4E2C17ED930044E094 /* Icons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +74,8 @@
 		5FD58E462C1662C30044E094 /* StaticWebFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StaticWebFiles; sourceTree = "<group>"; };
 		5FD58E482C167C8F0044E094 /* CSS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSS.swift; sourceTree = "<group>"; };
 		5FD58E4A2C1683AA0044E094 /* FloatingSwiftUIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingSwiftUIWindow.swift; sourceTree = "<group>"; };
+		5FD58E4C2C17E7760044E094 /* StatusMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenu.swift; sourceTree = "<group>"; };
+		5FD58E4E2C17ED930044E094 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 			children = (
 				5F7D904B2C1533A10090D0C7 /* Info.plist */,
 				5F7D90202C14FF130090D0C7 /* AppDelegate.swift */,
+				5FD58E4C2C17E7760044E094 /* StatusMenu.swift */,
 				5F7D904E2C153EBB0090D0C7 /* StoreViewController.swift */,
 				5F7D90222C14FF130090D0C7 /* AppViewController.swift */,
 				5FD58E3A2C1639EA0044E094 /* AppNSWindow.swift */,
@@ -162,6 +167,7 @@
 			children = (
 				5FD58E342C1547DD0044E094 /* MS Sans Serif.ttf */,
 				5FD58E362C1547E70044E094 /* MS Sans Serif Bold.ttf */,
+				5FD58E4E2C17ED930044E094 /* Icons.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -252,10 +258,12 @@
 			files = (
 				5F7D90422C1527F60090D0C7 /* DataStore.swift in Sources */,
 				5F7D904A2C1529EA0090D0C7 /* ProgramGen.swift in Sources */,
+				5FD58E4F2C17ED930044E094 /* Icons.swift in Sources */,
 				5F7D903B2C1505FE0090D0C7 /* Settings.swift in Sources */,
 				5F7D90372C1504AA0090D0C7 /* WebViewHack.m in Sources */,
 				5F7D90452C1527F60090D0C7 /* Task.swift in Sources */,
 				5FD58E312C15461C0044E094 /* Color.swift in Sources */,
+				5FD58E4D2C17E7760044E094 /* StatusMenu.swift in Sources */,
 				5F7D90232C14FF130090D0C7 /* AppViewController.swift in Sources */,
 				5F7D904F2C153EBB0090D0C7 /* StoreViewController.swift in Sources */,
 				5F7D904D2C153E940090D0C7 /* ContactDevWindow.swift in Sources */,

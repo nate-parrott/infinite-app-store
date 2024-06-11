@@ -29,6 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        _ = StatusMenuManager.shared
         // Insert code here to initialize your application
     }
 

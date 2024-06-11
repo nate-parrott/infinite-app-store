@@ -56,6 +56,14 @@ class BorderlessSwiftUIWindow<V: View>: NSWindow {
         }
     }
 
+    var closeOnResignMain = false
+    override func resignMain() {
+        super.resignMain()
+        if closeOnResignMain {
+            self.close()
+        }
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -63,6 +71,8 @@ class BorderlessSwiftUIWindow<V: View>: NSWindow {
     override var canBecomeKey: Bool {
         true
     }
+
+    override var canBecomeMain: Bool { true }
 
     func handleWindowAction(_ action: WindowControlAction) {
         switch action {

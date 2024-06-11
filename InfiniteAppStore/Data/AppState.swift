@@ -1,6 +1,6 @@
 import Foundation
 
-struct Program: Equatable, Codable {
+struct Program: Equatable, Codable, Identifiable {
     var id: String
 
     var js = ""
@@ -8,9 +8,9 @@ struct Program: Equatable, Codable {
     var html = ""
     var title: String = ""
     var subtitle: String = ""
-    var iconSymbol: String = ""
     var colorHex: String = "0000ff"
     var generating = true
+    var iconName: String = "executable"
 }
 
 struct AppState: Equatable, Codable {
@@ -27,3 +27,13 @@ class AppStore: DataStore<AppState> {
     static let shared = AppStore(persistenceKey: "InfiniteAppStoreStore", defaultModel: .init(), queue: .main)
 }
 
+extension Program {
+    static func stubsForMenu() -> [Program] {
+        // Define 3 stub apps. Leave js, css, html blank
+        [
+            Program(id: "1", title: "App 1", subtitle: "App 1 subtitle", colorHex: "ff0000"),
+            Program(id: "2", title: "App 2", subtitle: "App 2 subtitle", colorHex: "00ff00"),
+            Program(id: "3", title: "App 3", subtitle: "App 3 subtitle", colorHex: "0000ff")
+        ]
+    }
+}

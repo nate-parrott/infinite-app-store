@@ -38,6 +38,18 @@ struct Demo95OuterStyles: ViewModifier {
     }
 }
 
+struct HorizontalDivider95: View {
+    var body: some View {
+        VStack(spacing: 0) {
+            Color(hex: 0x8F8F8F)
+                .frame(height: 1)
+            Color.white
+                .frame(height: 1)
+        }
+        .accessibilityRepresentation { Divider() }
+    }
+}
+
 extension View {
     func withFont95() -> some View {
         self
