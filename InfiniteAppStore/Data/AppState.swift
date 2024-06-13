@@ -9,7 +9,7 @@ struct Program: Equatable, Codable, Identifiable {
     var title: String = ""
     var subtitle: String = ""
     var colorHex: String = "0000ff"
-    var generating = true
+    var installProgress: Double?
     var iconName: String = "executable"
 }
 

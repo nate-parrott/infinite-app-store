@@ -1,5 +1,5 @@
 {
-  "originHash" : "e89668f7ccee043e31b0daa2ad41f2cff1a8efe5d4562e52d16e75f321b6c414",
+  "originHash" : "2ef8fca4105428750bab3343c5f0762a803be17486adf3f2e60d2a86aa238a15",
   "pins" : [
     {
       "identity" : "fuzi",
@@ -38,12 +38,12 @@
       }
     },
     {
-      "identity" : "swiftui-introspect?tab=readme-ov-file",
+      "identity" : "usearch",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/siteline/swiftui-introspect?tab=readme-ov-file",
+      "location" : "https://github.com/unum-cloud/usearch.git",
       "state" : {
-        "revision" : "7dc5b287f8040e4ad5038739850b758e78f77808",
-        "version" : "1.1.4"
+        "revision" : "5ea48c87c56a25ab57634a8f207f80ae675ed58e",
+        "version" : "2.12.0"
       }
     }
   ],

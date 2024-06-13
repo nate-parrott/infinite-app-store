@@ -19,8 +19,17 @@ struct AppWindowContentView: View {
                         .padding()
                 }
             }
+            .overlay {
+                if let program, let progress = program.installProgress {
+                    InstallShield(name: program.title, progress: progress)
+                        .onDisappear {
+                            self.errors.removeAll()
+                        }
+                }
+            }
         }
         .edgesIgnoringSafeArea(.all)
+        .onReceive(AppStore.shared.publisher.map { $0.programs[id] }, perform: { self.program = $0 })
     }
 }
 
@@ -51,11 +60,11 @@ private struct ErrorView: View {
 }
 
 class AppViewController: NSViewController {
-    var id: String? {
+    var programID: String? {
         didSet {
-            if id == oldValue { return }
-            guard let id else { return }
-            mainView = NSHostingView(rootView: AppWindowContentView(id: id))
+            if programID == oldValue { return }
+            guard let programID else { return }
+            mainView = NSHostingView(rootView: AppWindowContentView(id: programID))
             mainView?.sizingOptions = []
             mainView?.rootView.onAction = { [weak self] action in
                 guard let self, let window = self.view.window else { return }
@@ -82,7 +91,7 @@ class AppViewController: NSViewController {
     }
 
     @IBAction func regenerate(_ sender: Any?) {
-        guard let id else { return }
+        guard let programID else { return }
         Task {
             do {
                 guard let title = await prompt(question: "title:"),
@@ -90,7 +99,7 @@ class AppViewController: NSViewController {
                 else {
                     return
                 }
-                try await AppStore.shared.generateProgram(id: id, title: title, subtitle: subtitle)
+                try await AppStore.shared.generateProgram(id: programID, title: title, subtitle: subtitle)
             } catch {
                 print("[Program gen] Error: \(error)")
             }
@@ -100,7 +109,7 @@ class AppViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.id = "test"
+        self.programID = "test"
     }
 
     override func viewWillAppear() {

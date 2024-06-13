@@ -10,16 +10,16 @@ import ChatToys
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-    @IBAction func showStoreVC(_ sender: Any?) {
-        if let match = NSApplication.shared.windows.first(where: { $0.contentViewController is StoreViewController }) {
-            match.makeKeyAndOrderFront(nil)
-        } else {
-            // Load "StoreWindowController" from storyboard
-            let storyboard = NSStoryboard(name: "Main", bundle: nil)
-            let storeVC = storyboard.instantiateController(withIdentifier: "StoreWindowController") as! NSWindowController
-            storeVC.showWindow(nil)
-        }
-    }
+//    @IBAction func showStoreVC(_ sender: Any?) {
+//        if let match = NSApplication.shared.windows.first(where: { $0.contentViewController is StoreViewController }) {
+//            match.makeKeyAndOrderFront(nil)
+//        } else {
+//            // Load "StoreWindowController" from storyboard
+//            let storyboard = NSStoryboard(name: "Main", bundle: nil)
+//            let storeVC = storyboard.instantiateController(withIdentifier: "StoreWindowController") as! NSWindowController
+//            storeVC.showWindow(nil)
+//        }
+//    }
 
     @IBAction func updateOpenAIKey(_ sender: Any?) {
         DefaultsKeys.openAIKey.stringValue = ""
@@ -44,7 +44,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // When app icon is clicked, and no windows are shown, show the store
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         if !flag {
-            showStoreVC(nil)
+            StatusMenuManager.shared.showMenu()
         }
         return true
     }

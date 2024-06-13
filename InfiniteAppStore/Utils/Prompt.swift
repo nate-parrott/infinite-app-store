@@ -116,10 +116,10 @@ struct AutofocusTextField: View {
 
 
 // Use BorderlessSwiftUIWindow and Prompt95
-func prompt(question: String) async -> String? {
+func prompt(question: String, title: String = "Question") async -> String? {
     let result = await withCheckedContinuation { continuation in
         DispatchQueue.main.async {
-            let model = PromptDialogModel(title: "Question", message: question, cancellable: true, hasTextField: true)
+            let model = PromptDialogModel(title: title, message: question, cancellable: true, hasTextField: true)
             let window = BorderlessSwiftUIWindow(resizable: false, dialog: true) {
                 Prompt95(model: model) { result in
                     continuation.resume(returning: result.cancelled ? nil : result.text)

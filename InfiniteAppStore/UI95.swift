@@ -112,6 +112,65 @@ extension View {
             }
             .clipShape(.rect)
     }
+
+    fileprivate func recessed95Effect() -> some View {
+        depthBorder(topLeftColor: Color.black.opacity(0.5), bottomRightColor: Color.white, offset: 1.5)
+    }
+}
+
+struct ProgressBar95: View {
+    var progress: Double
+
+    var body: some View {
+        let spacing: CGFloat = 3
+
+        PerFrameAnimationView(t: progress, content: { progress in
+            let boxWidth: CGFloat = 16
+            GeometryReader { geo in
+                let totalBoxes = Int(floor(geo.size.width / Double(boxWidth)))
+                let actualBoxWidth: CGFloat = geo.size.width / Double(totalBoxes)
+                let boxesFilled = Int(floor(Double(totalBoxes) * progress))
+                HStack(spacing: 0) {
+                    ForEach(Array(0..<boxesFilled), id: \.self) { _ in
+                        Color.blue95
+                            .padding(spacing / 2)
+                            .frame(width: actualBoxWidth)
+                    }
+                }
+            }
+        })
+        .padding(spacing / 2)
+        .frame(height: 26)
+        .recessed95Effect()
+    }
+}
+
+struct InstallShield: View {
+    var name: String
+    var progress: Double
+
+    var body: some View {
+        LinearGradient(colors: [Color(hex: 0x0201F5), Color.black], startPoint: .top, endPoint: .bottom)
+            .overlay(alignment: .topLeading) {
+                Text(name)
+                    .font(.custom("TimesNewRomanPS-BoldItalicMT", size: 36))
+                    .foregroundStyle(Color.white)
+                    .shadow(color: Color.black, radius: 0, x: 5, y: 5)
+                    .padding()
+            }
+            .overlay(alignment: .bottomTrailing) {
+                VStack(alignment: .leading, spacing: 14, content: {
+                    Text("Generating Program...")
+                    ProgressBar95(progress: progress)
+                        .animation(.linear(duration: 0.3), value: progress)
+                        .frame(width: 200)
+                })
+                .padding()
+                .background(Color.gray95)
+                .with95DepthEffect(pushed: false, outerBorder: false)
+                .padding()
+            }
+    }
 }
 
 struct Window95<V: View>: View {
@@ -182,16 +241,21 @@ struct ButtonStyle95: ButtonStyle {
 
 struct Demo95: View {
     var body: some View {
-        Window95(title: "Hello World", onControlAction: {_ in ()}) {
-            Button(action: {}) {
-                Text("Hi there!")
-                    .withFont95()
-            }
-            .padding()
+        Window95(title: "Installing", onControlAction: {_ in ()}) {
+            InstallShield(name: "Rude Calculator", progress: 0.7)
+                .frame(height: 400)
+//            Button(action: {}) {
+//                Text("Hi there!")
+//                    .withFont95()
+//            }
+//            .padding()
+//
+//            ProgressBar95(progress: 0.5)
+//            ProgressBar95(progress: 1)
         }
-        .padding()
-        .frame(width: 400)
-        .background(Color.green)
+        .padding(60)
+        .frame(width: 500)
+        .background(Color(hex: 0x53A8A8))
     }
 }
 

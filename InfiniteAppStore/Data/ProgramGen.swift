@@ -32,6 +32,13 @@ enum Prompts {
     \(CSS.baseCSS)
     </style>
 
+    # Icons
+    There are a few built-in icons you can use. You should pick one for the app itself. You can also reference them in your code like this: `/static/Icons/address_book.png`.
+    Use only these icon identifiers:
+    ```
+    \(Icons.iconNames.joined(separator: ", "))
+    ```
+
     # App Prompt
     Here is the prompt:
     App Name: '[name]'
@@ -41,6 +48,7 @@ enum Prompts {
 
     ```
     interface App {
+        icon: string // Use only icons from the list above. Name only (not path) like 'address_book'
         html: string // Include <body> only, no <head>. You don't need to link the CSS or JS files.
         css: string
         js: string
@@ -62,10 +70,17 @@ extension AppStore {
         .replacingOccurrences(of: "[description]", with: subtitle)
 
         struct Output: Codable {
+            let icon: String?
             let html: String?
             let css: String?
             let js: String?
         }
+
+        AppStore.shared.modify { $0.modifyProgram(id: id, { 
+            $0.installProgress = 0
+            $0.title = title
+            $0.subtitle = subtitle
+        }) }
 
         let llm = try await ChatGPT(credentials: .getOrPromptForCreds(), options: .init(model: .gpt4_omni, jsonMode: true))
         var last: Output?
@@ -73,12 +88,13 @@ extension AppStore {
             last = partial
             AppStore.shared.modify { state in
                 state.modifyProgram(id: id) { program in
+                    program.iconName = partial.icon ?? "executable"
                     program.html = partial.html ?? ""
                     program.css = partial.css ?? ""
                     program.js = ""
                     program.title = title
                     program.subtitle = subtitle
-                    program.generating = true
+                    program.computeEstimatedInstallProgress(jsLen: partial.js?.count ?? 0)
                 }
             }
         }
@@ -90,8 +106,24 @@ extension AppStore {
                 program.html = output.html ?? ""
                 program.css = output.css ?? ""
                 program.js = output.js ?? ""
-                program.generating = false
+                print("HTML: \(program.html.count); JS: \(program.js.count); CSS: \(program.css.count)")
+                program.installProgress = nil
             }
         }
+    }
+}
+
+extension Program {
+    mutating func computeEstimatedInstallProgress(jsLen: Int) {
+        let expectedHtmlLen: Int = 700
+        let expectedCSSLen: Int = 700
+        let expectedJSLen: Int = 700
+
+        let finalHtmlLen: Int? = css.count > 0 ? html.count : nil
+        let finalCSSLen: Int? = jsLen > 0 ? css.count : nil
+
+        let totalLen = html.count + css.count + jsLen
+        let expectedLen = (finalHtmlLen ?? expectedHtmlLen) + (finalCSSLen ?? expectedCSSLen) + max(expectedJSLen, jsLen)
+        installProgress = 0.1 + Double(totalLen) / Double(expectedLen) * 0.9
     }
 }

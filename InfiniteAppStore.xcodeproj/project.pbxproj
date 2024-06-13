@@ -24,7 +24,6 @@
 		5F7D904A2C1529EA0090D0C7 /* ProgramGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D90492C1529EA0090D0C7 /* ProgramGen.swift */; };
 		5F7D904D2C153E940090D0C7 /* ContactDevWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D904C2C153E940090D0C7 /* ContactDevWindow.swift */; };
 		5F7D904F2C153EBB0090D0C7 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D904E2C153EBB0090D0C7 /* StoreViewController.swift */; };
-		5FD58E2D2C1545C00044E094 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 5FD58E2C2C1545C00044E094 /* SwiftUIIntrospect */; };
 		5FD58E2F2C1545ED0044E094 /* UI95.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD58E2E2C1545ED0044E094 /* UI95.swift */; };
 		5FD58E312C15461C0044E094 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD58E302C15461C0044E094 /* Color.swift */; };
 		5FD58E352C1547DD0044E094 /* MS Sans Serif.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FD58E342C1547DD0044E094 /* MS Sans Serif.ttf */; };
@@ -85,7 +84,6 @@
 			files = (
 				5FD58E3E2C163F500044E094 /* Swifter in Frameworks */,
 				5F7D90312C1503B50090D0C7 /* ChatToys in Frameworks */,
-				5FD58E2D2C1545C00044E094 /* SwiftUIIntrospect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,7 +188,6 @@
 			name = InfiniteAppStore;
 			packageProductDependencies = (
 				5F7D90302C1503B50090D0C7 /* ChatToys */,
-				5FD58E2C2C1545C00044E094 /* SwiftUIIntrospect */,
 				5FD58E3D2C163F500044E094 /* Swifter */,
 			);
 			productName = InfiniteAppStore;
@@ -224,7 +221,6 @@
 			mainGroup = 5F7D90142C14FF130090D0C7;
 			packageReferences = (
 				5F7D902F2C1503B50090D0C7 /* XCLocalSwiftPackageReference "../chattoys" */,
-				5FD58E2B2C1545C00044E094 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
 				5FD58E3C2C163F500044E094 /* XCRemoteSwiftPackageReference "swifter" */,
 			);
 			productRefGroup = 5F7D901E2C14FF130090D0C7 /* Products */;
@@ -513,14 +509,6 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5FD58E2B2C1545C00044E094 /* XCRemoteSwiftPackageReference "swiftui-introspect" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/siteline/swiftui-introspect?tab=readme-ov-file";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.4;
-			};
-		};
 		5FD58E3C2C163F500044E094 /* XCRemoteSwiftPackageReference "swifter" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/httpswift/swifter.git";
@@ -535,11 +523,6 @@
 		5F7D90302C1503B50090D0C7 /* ChatToys */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ChatToys;
-		};
-		5FD58E2C2C1545C00044E094 /* SwiftUIIntrospect */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5FD58E2B2C1545C00044E094 /* XCRemoteSwiftPackageReference "swiftui-introspect" */;
-			productName = SwiftUIIntrospect;
 		};
 		5FD58E3D2C163F500044E094 /* Swifter */ = {
 			isa = XCSwiftPackageProductDependency;

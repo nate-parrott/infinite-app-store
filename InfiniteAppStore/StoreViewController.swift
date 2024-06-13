@@ -6,7 +6,7 @@ class StoreViewController: AppViewController {
 //
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.id = "Store"
+        self.programID = "Store"
     }
 //
 //    override func viewDidLayout() {

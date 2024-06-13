@@ -6,12 +6,14 @@ class StatusMenuManager: NSObject {
     static let shared = StatusMenuManager()
 
     let statusItem: NSStatusItem
-    private var window: BorderlessSwiftUIWindow<StatusMenuView>?
+    private var window: BorderlessSwiftUIWindow<BaseStatusMenuView>?
 
     override init() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         if let button = statusItem.button {
-            button.image = NSImage(systemSymbolName: "app.gift.fill", accessibilityDescription: "Infinite App Store Apps")
+            button.setAccessibilityLabel("Infinite App Store Apps")
+            button.image = NSImage(named: "icon95") // NSImage(systemSymbolName: "app.gift.fill", accessibilityDescription: "Infinite App Store Apps")
+            button.imageScaling = .scaleProportionallyDown
         }
         super.init()
 
@@ -21,11 +23,21 @@ class StatusMenuManager: NSObject {
         }
     }
 
+    func showMenu() {
+        if !isVisible {
+            toggleMenu(sender: nil)
+        }
+    }
+
+    var isVisible: Bool {
+        window?.isVisible ?? false
+    }
+
     @objc private func toggleMenu(sender: Any?) {
         let visibleWindow = window?.isVisible ?? false ? window : nil
         if visibleWindow == nil {
             let window = BorderlessSwiftUIWindow(resizable: false, dialog: false) {
-                StatusMenuView(programs: Program.stubsForMenu())
+                BaseStatusMenuView()
             }
             window.level = .popUpMenu
             window.makeKeyAndOrderFront(nil)
@@ -49,6 +61,31 @@ class StatusMenuManager: NSObject {
     }
 }
 
+extension NSApplication {
+    @MainActor
+    func openOrFocusProgram(id: String) {
+        //             view.window?.frameAutosaveName
+        if let win = windows.first(where: { ($0.contentViewController as? AppViewController)?.programID == id }) {
+            win.makeKeyAndOrderFront(nil)
+        } else {
+            let windowController = NSStoryboard.main!.instantiateController(withIdentifier: "AppWindowController") as! NSWindowController
+            let vc = windowController.window!.contentViewController!  as! AppViewController
+            vc.programID = id
+            windowController.window?.setFrameUsingName("Program:\(id)", force: false)
+            windowController.window?.makeKeyAndOrderFront(nil)
+            windowController.window?.setFrameAutosaveName("Program:\(id)")
+        }
+    }
+}
+
+struct BaseStatusMenuView: View {
+    var body: some View {
+        WithSnapshot(store: AppStore.shared, snapshot: { $0.programs.values.sorted(by: { $0.title < $1.title }) }) { programs in
+            StatusMenuView(programs: programs ?? [])
+        }
+    }
+}
+
 struct StatusMenuView: View {
     var programs: [Program]
 
@@ -58,7 +95,6 @@ struct StatusMenuView: View {
         VStack(spacing: 0) {
             StatusMenuItem(idForHover: "new", hoveredId: $hovered, onTap: newProgram) {
                 RetroIconView(name: "installer")
-
                 Text("New App...")
             }
 
@@ -80,16 +116,27 @@ struct StatusMenuView: View {
     }
 
     private func newProgram() {
-        // TODO
+        Task {
+            guard let title = await prompt(question: "Choose a name for your app:", title: "Create App (1/2)"),
+                  let subtitle = await prompt(question: "Describe your app briefly:", title: "Create App (2/2)")
+            else {
+                return
+            }
+            let id = UUID().uuidString
+            open(programId: id)
+            try await AppStore.shared.generateProgram(id: id, title: title, subtitle: subtitle)
+        }
     }
 
-    private func open(program: Program) {
-        // TODO
+    private func open(programId: String) {
+        DispatchQueue.main.async {
+            NSApp.openOrFocusProgram(id: programId)
+        }
     }
 
     @ViewBuilder func cell(program: Program) -> some View {
         StatusMenuItem(idForHover: "program:\(program.id)", hoveredId: $hovered, onTap: {
-            open(program: program)
+            open(programId: program.id)
         }, label: {
             RetroIconView(name: program.iconName)
 
