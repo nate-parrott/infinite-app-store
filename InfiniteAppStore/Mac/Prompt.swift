@@ -1,6 +1,5 @@
 import SwiftUI
 import Foundation
-import AppKit
 
 struct PromptDialogModel: Equatable {
     var title: String
@@ -14,12 +13,6 @@ struct PromptDialogResult: Equatable {
     var text: String
     var cancelled: Bool
 }
-
-/*
-struct WindowActionHandlerKey: EnvironmentKey {
-    static var defaultValue: (WindowControlAction) -> Void = { _ in }
-}
-*/
 
 struct Prompt95: View {
     var model: PromptDialogModel
@@ -92,6 +85,8 @@ struct AutofocusTextField: View {
     }
 }
 
+#if os(macOS)
+import AppKit
 
 // Use BorderlessSwiftUIWindow and Prompt95
 func prompt(question: String, title: String = "Question") async -> String? {
@@ -125,23 +120,18 @@ extension PromptDialogModel {
     }
 }
 
-//// Nil if cancelled
-//func prompt(question: String) async -> String? {
-//    return await withCheckedContinuation { continuation in
-//        DispatchQueue.main.async {
-//            let alert = NSAlert()
-//            alert.messageText = question
-//            alert.addButton(withTitle: "OK")
-//            alert.addButton(withTitle: "Cancel")
-//            let textField = NSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
-//            alert.accessoryView = textField
-//            alert.beginSheetModal(for: NSApp.mainWindow!) { response in
-//                if response == .alertFirstButtonReturn {
-//                    continuation.resume(returning: textField.stringValue)
-//                } else {
-//                    continuation.resume(returning: nil)
-//                }
-//            }
-//        }
-//    }
-//}
+#else
+
+func prompt(question: String, title: String = "Question") async -> String? {
+    let res = await PromptDialogModel(title: title, message: question, cancellable: true, hasTextField: true).run()
+    return res.cancelled ? nil : res.text
+}
+
+extension PromptDialogModel {
+    func run() async -> PromptDialogResult {
+        let (ok, text) = await UIApplication.shared.prompt(title: title, message: message, showTextField: hasTextField, placeholder: nil)
+        return .init(text: text ?? "", cancelled: !ok)
+    }
+}
+
+#endif

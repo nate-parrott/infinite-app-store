@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 #if os(macOS)
 import AppKit
@@ -14,6 +15,16 @@ enum CrossPlatform {
         NSWorkspace.shared.open(url)
         #else
         UIApplication.shared.open(url)
+        #endif
+    }
+}
+
+extension Image {
+    init(uinsImage: UINSImage) {
+        #if os(macOS)
+        self = .init(nsImage: uinsImage)
+        #else
+        self = .init(uiImage: uinsImage)
         #endif
     }
 }
