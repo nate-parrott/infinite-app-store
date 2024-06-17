@@ -23,8 +23,40 @@
 		5F7D90452C1527F60090D0C7 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D90412C1527F60090D0C7 /* Task.swift */; };
 		5F7D90482C15280A0090D0C7 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D90472C15280A0090D0C7 /* AppState.swift */; };
 		5F7D904A2C1529EA0090D0C7 /* ProgramGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D90492C1529EA0090D0C7 /* ProgramGen.swift */; };
-		5F7D904D2C153E940090D0C7 /* ContactDevWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D904C2C153E940090D0C7 /* ContactDevWindow.swift */; };
+		5F7D904D2C153E940090D0C7 /* ContactDev.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D904C2C153E940090D0C7 /* ContactDev.swift */; };
 		5F7D904F2C153EBB0090D0C7 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D904E2C153EBB0090D0C7 /* StoreViewController.swift */; };
+		5F7F2FB82C1FCDBE008E16C7 /* InfiniteAppStoreiOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F2FB72C1FCDBE008E16C7 /* InfiniteAppStoreiOSApp.swift */; };
+		5F7F2FBA2C1FCDBE008E16C7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F2FB92C1FCDBE008E16C7 /* ContentView.swift */; };
+		5F7F2FBC2C1FCDBF008E16C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F7F2FBB2C1FCDBF008E16C7 /* Assets.xcassets */; };
+		5F7F2FBF2C1FCDBF008E16C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F7F2FBE2C1FCDBF008E16C7 /* Preview Assets.xcassets */; };
+		5F7F2FC52C1FCDFC008E16C7 /* ContactDevWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F2FC42C1FCDFC008E16C7 /* ContactDevWindow.swift */; };
+		5F7F2FC72C1FCE1E008E16C7 /* CrossPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F2FC62C1FCE1E008E16C7 /* CrossPlatform.swift */; };
+		5F7F2FC82C1FCE1E008E16C7 /* CrossPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F2FC62C1FCE1E008E16C7 /* CrossPlatform.swift */; };
+		5F7F2FC92C1FCE51008E16C7 /* UI95.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD58E2E2C1545ED0044E094 /* UI95.swift */; };
+		5F7F2FCA2C1FCE7B008E16C7 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D903E2C1527F60090D0C7 /* DataStore.swift */; };
+		5F7F2FCB2C1FCE7F008E16C7 /* SwiftUI+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0C14802C1A907700574D1E /* SwiftUI+Convenience.swift */; };
+		5F7F2FCC2C1FCE81008E16C7 /* PerFrameAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD58E412C1661A40044E094 /* PerFrameAnimationView.swift */; };
+		5F7F2FCD2C1FCE83008E16C7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD58E302C15461C0044E094 /* Color.swift */; };
+		5F7F2FCE2C1FCE86008E16C7 /* DataStore+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D903F2C1527F60090D0C7 /* DataStore+SwiftUI.swift */; };
+		5F7F2FCF2C1FCE8A008E16C7 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D90402C1527F60090D0C7 /* Queue.swift */; };
+		5F7F2FD02C1FCE8C008E16C7 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD58E382C1555A60044E094 /* String.swift */; };
+		5F7F2FD12C1FCE8E008E16C7 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D90412C1527F60090D0C7 /* Task.swift */; };
+		5F7F2FD22C1FCE91008E16C7 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D90472C15280A0090D0C7 /* AppState.swift */; };
+		5F7F2FD32C1FCE93008E16C7 /* ProgramGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D90492C1529EA0090D0C7 /* ProgramGen.swift */; };
+		5F7F2FD42C1FCE95008E16C7 /* CSS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD58E482C167C8F0044E094 /* CSS.swift */; };
+		5F7F2FD52C1FCE99008E16C7 /* MS Sans Serif Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FD58E362C1547E70044E094 /* MS Sans Serif Bold.ttf */; };
+		5F7F2FD62C1FCE99008E16C7 /* MS Sans Serif.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FD58E342C1547DD0044E094 /* MS Sans Serif.ttf */; };
+		5F7F2FD72C1FCE99008E16C7 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD58E4E2C17ED930044E094 /* Icons.swift */; };
+		5F7F2FDF2C1FCF43008E16C7 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 5F7F2FDE2C1FCF43008E16C7 /* Swifter */; };
+		5F7F2FE12C1FCF45008E16C7 /* ChatToys in Frameworks */ = {isa = PBXBuildFile; productRef = 5F7F2FE02C1FCF45008E16C7 /* ChatToys */; };
+		5F7F2FE42C1FCF73008E16C7 /* PromptDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F2FE22C1FCF73008E16C7 /* PromptDialog.swift */; };
+		5F7F2FE82C1FCFAA008E16C7 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D903A2C1505FE0090D0C7 /* Settings.swift */; };
+		5F7F2FE92C1FCFAC008E16C7 /* InfiniteWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D90322C15043C0090D0C7 /* InfiniteWebView.swift */; };
+		5F7F2FEA2C1FCFAF008E16C7 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD58E3F2C163F560044E094 /* Server.swift */; };
+		5F7F2FEB2C1FCFB1008E16C7 /* ContactDev.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D904C2C153E940090D0C7 /* ContactDev.swift */; };
+		5F7F2FEC2C1FCFB7008E16C7 /* WebViewHack.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D90362C1504AA0090D0C7 /* WebViewHack.m */; };
+		5F7F2FEE2C1FD1E8008E16C7 /* WindowControlAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F2FED2C1FD1E8008E16C7 /* WindowControlAction.swift */; };
+		5F7F2FEF2C1FD1E8008E16C7 /* WindowControlAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F2FED2C1FD1E8008E16C7 /* WindowControlAction.swift */; };
 		5FD58E2F2C1545ED0044E094 /* UI95.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD58E2E2C1545ED0044E094 /* UI95.swift */; };
 		5FD58E312C15461C0044E094 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD58E302C15461C0044E094 /* Color.swift */; };
 		5FD58E352C1547DD0044E094 /* MS Sans Serif.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FD58E342C1547DD0044E094 /* MS Sans Serif.ttf */; };
@@ -62,8 +94,18 @@
 		5F7D90472C15280A0090D0C7 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		5F7D90492C1529EA0090D0C7 /* ProgramGen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramGen.swift; sourceTree = "<group>"; };
 		5F7D904B2C1533A10090D0C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		5F7D904C2C153E940090D0C7 /* ContactDevWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDevWindow.swift; sourceTree = "<group>"; };
+		5F7D904C2C153E940090D0C7 /* ContactDev.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDev.swift; sourceTree = "<group>"; };
 		5F7D904E2C153EBB0090D0C7 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
+		5F7F2FB52C1FCDBE008E16C7 /* InfiniteAppStoreiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfiniteAppStoreiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F7F2FB72C1FCDBE008E16C7 /* InfiniteAppStoreiOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteAppStoreiOSApp.swift; sourceTree = "<group>"; };
+		5F7F2FB92C1FCDBE008E16C7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5F7F2FBB2C1FCDBF008E16C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5F7F2FBE2C1FCDBF008E16C7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5F7F2FC42C1FCDFC008E16C7 /* ContactDevWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDevWindow.swift; sourceTree = "<group>"; };
+		5F7F2FC62C1FCE1E008E16C7 /* CrossPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossPlatform.swift; sourceTree = "<group>"; };
+		5F7F2FD82C1FCEB5008E16C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5F7F2FE22C1FCF73008E16C7 /* PromptDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptDialog.swift; sourceTree = "<group>"; };
+		5F7F2FED2C1FD1E8008E16C7 /* WindowControlAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowControlAction.swift; sourceTree = "<group>"; };
 		5FD58E2E2C1545ED0044E094 /* UI95.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI95.swift; sourceTree = "<group>"; };
 		5FD58E302C15461C0044E094 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		5FD58E342C1547DD0044E094 /* MS Sans Serif.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MS Sans Serif.ttf"; sourceTree = "<group>"; };
@@ -89,6 +131,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5F7F2FB22C1FCDBE008E16C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F7F2FDF2C1FCF43008E16C7 /* Swifter in Frameworks */,
+				5F7F2FE12C1FCF45008E16C7 /* ChatToys in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -96,7 +147,9 @@
 			isa = PBXGroup;
 			children = (
 				5F7D901F2C14FF130090D0C7 /* InfiniteAppStore */,
+				5F7F2FB62C1FCDBE008E16C7 /* InfiniteAppStoreiOS */,
 				5F7D901E2C14FF130090D0C7 /* Products */,
+				5F7F2FDD2C1FCF43008E16C7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				5F7D901D2C14FF130090D0C7 /* InfiniteAppStore.app */,
+				5F7F2FB52C1FCDBE008E16C7 /* InfiniteAppStoreiOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,19 +166,14 @@
 			isa = PBXGroup;
 			children = (
 				5F7D904B2C1533A10090D0C7 /* Info.plist */,
-				5F7D90202C14FF130090D0C7 /* AppDelegate.swift */,
-				5FD58E4C2C17E7760044E094 /* StatusMenu.swift */,
-				5F7D904E2C153EBB0090D0C7 /* StoreViewController.swift */,
-				5F7D90222C14FF130090D0C7 /* AppViewController.swift */,
-				5FD58E3A2C1639EA0044E094 /* AppNSWindow.swift */,
+				5F7F2FC32C1FCDCE008E16C7 /* Mac */,
 				5FD58E2E2C1545ED0044E094 /* UI95.swift */,
 				5FD58E432C1661C00044E094 /* Data */,
 				5FD58E442C1661C80044E094 /* Assets */,
 				5F7D903A2C1505FE0090D0C7 /* Settings.swift */,
 				5F7D90322C15043C0090D0C7 /* InfiniteWebView.swift */,
-				5FD58E4A2C1683AA0044E094 /* FloatingSwiftUIWindow.swift */,
 				5FD58E3F2C163F560044E094 /* Server.swift */,
-				5F7D904C2C153E940090D0C7 /* ContactDevWindow.swift */,
+				5F7D904C2C153E940090D0C7 /* ContactDev.swift */,
 				5FD58E462C1662C30044E094 /* StaticWebFiles */,
 				5F7D90462C1527FB0090D0C7 /* Utils */,
 				5F7D90352C1504AA0090D0C7 /* WebViewHack.h */,
@@ -140,8 +189,9 @@
 		5F7D90462C1527FB0090D0C7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				5F7D90382C1505760090D0C7 /* Prompt.swift */,
 				5F7D903E2C1527F60090D0C7 /* DataStore.swift */,
+				5F7F2FED2C1FD1E8008E16C7 /* WindowControlAction.swift */,
+				5F7F2FC62C1FCE1E008E16C7 /* CrossPlatform.swift */,
 				5F0C14802C1A907700574D1E /* SwiftUI+Convenience.swift */,
 				5FD58E412C1661A40044E094 /* PerFrameAnimationView.swift */,
 				5FD58E302C15461C0044E094 /* Color.swift */,
@@ -151,6 +201,49 @@
 				5F7D90412C1527F60090D0C7 /* Task.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		5F7F2FB62C1FCDBE008E16C7 /* InfiniteAppStoreiOS */ = {
+			isa = PBXGroup;
+			children = (
+				5F7F2FD82C1FCEB5008E16C7 /* Info.plist */,
+				5F7F2FB72C1FCDBE008E16C7 /* InfiniteAppStoreiOSApp.swift */,
+				5F7F2FE22C1FCF73008E16C7 /* PromptDialog.swift */,
+				5F7F2FB92C1FCDBE008E16C7 /* ContentView.swift */,
+				5F7F2FBB2C1FCDBF008E16C7 /* Assets.xcassets */,
+				5F7F2FBD2C1FCDBF008E16C7 /* Preview Content */,
+			);
+			path = InfiniteAppStoreiOS;
+			sourceTree = "<group>";
+		};
+		5F7F2FBD2C1FCDBF008E16C7 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5F7F2FBE2C1FCDBF008E16C7 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5F7F2FC32C1FCDCE008E16C7 /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				5F7D90202C14FF130090D0C7 /* AppDelegate.swift */,
+				5F7D90382C1505760090D0C7 /* Prompt.swift */,
+				5FD58E4C2C17E7760044E094 /* StatusMenu.swift */,
+				5F7F2FC42C1FCDFC008E16C7 /* ContactDevWindow.swift */,
+				5F7D904E2C153EBB0090D0C7 /* StoreViewController.swift */,
+				5F7D90222C14FF130090D0C7 /* AppViewController.swift */,
+				5FD58E3A2C1639EA0044E094 /* AppNSWindow.swift */,
+				5FD58E4A2C1683AA0044E094 /* FloatingSwiftUIWindow.swift */,
+			);
+			path = Mac;
+			sourceTree = "<group>";
+		};
+		5F7F2FDD2C1FCF43008E16C7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		5FD58E432C1661C00044E094 /* Data */ = {
@@ -197,6 +290,29 @@
 			productReference = 5F7D901D2C14FF130090D0C7 /* InfiniteAppStore.app */;
 			productType = "com.apple.product-type.application";
 		};
+		5F7F2FB42C1FCDBE008E16C7 /* InfiniteAppStoreiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F7F2FC02C1FCDBF008E16C7 /* Build configuration list for PBXNativeTarget "InfiniteAppStoreiOS" */;
+			buildPhases = (
+				5F7F2FB12C1FCDBE008E16C7 /* Sources */,
+				5F7F2FB22C1FCDBE008E16C7 /* Frameworks */,
+				5F7F2FB32C1FCDBE008E16C7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5F7F2FDC2C1FCF3F008E16C7 /* PBXTargetDependency */,
+				5F7F2FDA2C1FCF3A008E16C7 /* PBXTargetDependency */,
+			);
+			name = InfiniteAppStoreiOS;
+			packageProductDependencies = (
+				5F7F2FDE2C1FCF43008E16C7 /* Swifter */,
+				5F7F2FE02C1FCF45008E16C7 /* ChatToys */,
+			);
+			productName = InfiniteAppStoreiOS;
+			productReference = 5F7F2FB52C1FCDBE008E16C7 /* InfiniteAppStoreiOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -210,6 +326,9 @@
 					5F7D901C2C14FF130090D0C7 = {
 						CreatedOnToolsVersion = 15.3;
 						LastSwiftMigration = 1530;
+					};
+					5F7F2FB42C1FCDBE008E16C7 = {
+						CreatedOnToolsVersion = 15.3;
 					};
 				};
 			};
@@ -231,6 +350,7 @@
 			projectRoot = "";
 			targets = (
 				5F7D901C2C14FF130090D0C7 /* InfiniteAppStore */,
+				5F7F2FB42C1FCDBE008E16C7 /* InfiniteAppStoreiOS */,
 			);
 		};
 /* End PBXProject section */
@@ -248,6 +368,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5F7F2FB32C1FCDBE008E16C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F7F2FD52C1FCE99008E16C7 /* MS Sans Serif Bold.ttf in Resources */,
+				5F7F2FD62C1FCE99008E16C7 /* MS Sans Serif.ttf in Resources */,
+				5F7F2FBF2C1FCDBF008E16C7 /* Preview Assets.xcassets in Resources */,
+				5F7F2FBC2C1FCDBF008E16C7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -260,16 +391,19 @@
 				5F7D904A2C1529EA0090D0C7 /* ProgramGen.swift in Sources */,
 				5FD58E4F2C17ED930044E094 /* Icons.swift in Sources */,
 				5F7D903B2C1505FE0090D0C7 /* Settings.swift in Sources */,
+				5F7F2FC72C1FCE1E008E16C7 /* CrossPlatform.swift in Sources */,
 				5F7D90372C1504AA0090D0C7 /* WebViewHack.m in Sources */,
+				5F7F2FC52C1FCDFC008E16C7 /* ContactDevWindow.swift in Sources */,
 				5F7D90452C1527F60090D0C7 /* Task.swift in Sources */,
 				5FD58E312C15461C0044E094 /* Color.swift in Sources */,
 				5FD58E4D2C17E7760044E094 /* StatusMenu.swift in Sources */,
 				5F7D90232C14FF130090D0C7 /* AppViewController.swift in Sources */,
 				5F7D904F2C153EBB0090D0C7 /* StoreViewController.swift in Sources */,
-				5F7D904D2C153E940090D0C7 /* ContactDevWindow.swift in Sources */,
+				5F7D904D2C153E940090D0C7 /* ContactDev.swift in Sources */,
 				5FD58E2F2C1545ED0044E094 /* UI95.swift in Sources */,
 				5FD58E3B2C1639EA0044E094 /* AppNSWindow.swift in Sources */,
 				5FD58E492C167C8F0044E094 /* CSS.swift in Sources */,
+				5F7F2FEE2C1FD1E8008E16C7 /* WindowControlAction.swift in Sources */,
 				5F7D90442C1527F60090D0C7 /* Queue.swift in Sources */,
 				5FD58E402C163F560044E094 /* Server.swift in Sources */,
 				5F7D90482C15280A0090D0C7 /* AppState.swift in Sources */,
@@ -283,7 +417,48 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5F7F2FB12C1FCDBE008E16C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F7F2FEF2C1FD1E8008E16C7 /* WindowControlAction.swift in Sources */,
+				5F7F2FBA2C1FCDBE008E16C7 /* ContentView.swift in Sources */,
+				5F7F2FD02C1FCE8C008E16C7 /* String.swift in Sources */,
+				5F7F2FD72C1FCE99008E16C7 /* Icons.swift in Sources */,
+				5F7F2FD42C1FCE95008E16C7 /* CSS.swift in Sources */,
+				5F7F2FEB2C1FCFB1008E16C7 /* ContactDev.swift in Sources */,
+				5F7F2FC92C1FCE51008E16C7 /* UI95.swift in Sources */,
+				5F7F2FB82C1FCDBE008E16C7 /* InfiniteAppStoreiOSApp.swift in Sources */,
+				5F7F2FEC2C1FCFB7008E16C7 /* WebViewHack.m in Sources */,
+				5F7F2FD12C1FCE8E008E16C7 /* Task.swift in Sources */,
+				5F7F2FEA2C1FCFAF008E16C7 /* Server.swift in Sources */,
+				5F7F2FE92C1FCFAC008E16C7 /* InfiniteWebView.swift in Sources */,
+				5F7F2FCC2C1FCE81008E16C7 /* PerFrameAnimationView.swift in Sources */,
+				5F7F2FE42C1FCF73008E16C7 /* PromptDialog.swift in Sources */,
+				5F7F2FCA2C1FCE7B008E16C7 /* DataStore.swift in Sources */,
+				5F7F2FCF2C1FCE8A008E16C7 /* Queue.swift in Sources */,
+				5F7F2FCD2C1FCE83008E16C7 /* Color.swift in Sources */,
+				5F7F2FC82C1FCE1E008E16C7 /* CrossPlatform.swift in Sources */,
+				5F7F2FD22C1FCE91008E16C7 /* AppState.swift in Sources */,
+				5F7F2FCE2C1FCE86008E16C7 /* DataStore+SwiftUI.swift in Sources */,
+				5F7F2FCB2C1FCE7F008E16C7 /* SwiftUI+Convenience.swift in Sources */,
+				5F7F2FD32C1FCE93008E16C7 /* ProgramGen.swift in Sources */,
+				5F7F2FE82C1FCFAA008E16C7 /* Settings.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5F7F2FDA2C1FCF3A008E16C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 5F7F2FD92C1FCF3A008E16C7 /* ChatToys */;
+		};
+		5F7F2FDC2C1FCF3F008E16C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 5F7F2FDB2C1FCF3F008E16C7 /* Swifter */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5F7D90262C14FF140090D0C7 /* Main.storyboard */ = {
@@ -434,6 +609,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Apps may use your location";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -442,6 +618,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nateparrott.InfiniteAppStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "InfiniteAppStore/InfiniteAppStore-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -468,6 +646,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Apps may use your location";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -476,9 +655,86 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nateparrott.InfiniteAppStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "InfiniteAppStore/InfiniteAppStore-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		5F7F2FC12C1FCDBF008E16C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"InfiniteAppStoreiOS/Preview Content\"";
+				DEVELOPMENT_TEAM = VPN8ZW6EAC;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = InfiniteAppStoreiOS/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Apps can use camera with permission";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Apps can use location with permission";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Apps can use microphone with permission";
+				INFOPLIST_KEY_NSMotionUsageDescription = "Apps can use motion with permission";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nateparrott.InfiniteAppStoreiOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "InfiniteAppStore/InfiniteAppStore-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5F7F2FC22C1FCDBF008E16C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"InfiniteAppStoreiOS/Preview Content\"";
+				DEVELOPMENT_TEAM = VPN8ZW6EAC;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = InfiniteAppStoreiOS/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Apps can use camera with permission";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Apps can use location with permission";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Apps can use microphone with permission";
+				INFOPLIST_KEY_NSMotionUsageDescription = "Apps can use motion with permission";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nateparrott.InfiniteAppStoreiOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "InfiniteAppStore/InfiniteAppStore-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -499,6 +755,15 @@
 			buildConfigurations = (
 				5F7D902D2C14FF140090D0C7 /* Debug */,
 				5F7D902E2C14FF140090D0C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F7F2FC02C1FCDBF008E16C7 /* Build configuration list for PBXNativeTarget "InfiniteAppStoreiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F7F2FC12C1FCDBF008E16C7 /* Debug */,
+				5F7F2FC22C1FCDBF008E16C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -526,6 +791,26 @@
 /* Begin XCSwiftPackageProductDependency section */
 		5F7D90302C1503B50090D0C7 /* ChatToys */ = {
 			isa = XCSwiftPackageProductDependency;
+			productName = ChatToys;
+		};
+		5F7F2FD92C1FCF3A008E16C7 /* ChatToys */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F7D902F2C1503B50090D0C7 /* XCLocalSwiftPackageReference "../chattoys" */;
+			productName = ChatToys;
+		};
+		5F7F2FDB2C1FCF3F008E16C7 /* Swifter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5FD58E3C2C163F500044E094 /* XCRemoteSwiftPackageReference "swifter" */;
+			productName = Swifter;
+		};
+		5F7F2FDE2C1FCF43008E16C7 /* Swifter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5FD58E3C2C163F500044E094 /* XCRemoteSwiftPackageReference "swifter" */;
+			productName = Swifter;
+		};
+		5F7F2FE02C1FCF45008E16C7 /* ChatToys */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F7D902F2C1503B50090D0C7 /* XCLocalSwiftPackageReference "../chattoys" */;
 			productName = ChatToys;
 		};
 		5FD58E3D2C163F500044E094 /* Swifter */ = {

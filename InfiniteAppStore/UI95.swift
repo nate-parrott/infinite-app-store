@@ -1,4 +1,3 @@
-import AppKit
 import SwiftUI
 
 extension Color {
@@ -8,6 +7,7 @@ extension Color {
 }
 
 #if os(macOS)
+import AppKit
 
 extension Font {
     static var font95Name: String = {
@@ -21,12 +21,18 @@ extension Font {
         CTFontManagerRegisterFontsForURL(fontURL as CFURL, .process, nil)
         return "MS Sans Serif Bold"
     }()
+}
+#else
+extension Font {
+    static var font95Name: String = "MS Sans Serif"
+    static var boldFont95Name: String = "MS Sans Serif Bold"
+}
+#endif
 
+extension Font {
     static var body95: Font = Font.custom(Self.font95Name, size: 15)
     static var boldBody95: Font = Font.custom(Self.boldFont95Name, size: 15)
 }
-
-#endif
 
 struct Demo95OuterStyles: ViewModifier {
     func body(content: Content) -> some View {

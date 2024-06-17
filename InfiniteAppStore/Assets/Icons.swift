@@ -66,11 +66,11 @@ enum Icons {
         "write_yellow"
       ]
 
-    static func iconWithName(_ name: String) -> NSImage? {
+    static func iconWithName(_ name: String) -> UINSImage? {
         let url = Bundle.main.url(forResource: "StaticWebFiles", withExtension: "")!
             .appendingPathComponent("Icons")
             .appendingPathComponent(name)
             .appendingPathExtension("png")
-        return NSImage(contentsOfFile: url.path)
+        return UINSImage(contentsOfFile: url.path)
     }
 }

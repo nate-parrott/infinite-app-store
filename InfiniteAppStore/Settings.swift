@@ -1,3 +1,7 @@
+#if os(iOS)
+import UIKit
+#endif
+
 import Foundation
 import ChatToys
 
@@ -32,7 +36,11 @@ extension OpenAICredentials {
         if let key = DefaultsKeys.openAIKey.stringValue, !key.isEmpty {
             return OpenAICredentials(apiKey: key)
         }
+        #if os(macOS)
         let key = await prompt(question: "Enter your OpenAI API key:")
+        #else
+        let (_, key) = await UIApplication.shared.prompt(title: "No API Key", message: "Add an API key:", showTextField: true, placeholder: "sk-??????")
+        #endif
         guard let key = key, !key.isEmpty else {
             throw Errors.noKey
         }

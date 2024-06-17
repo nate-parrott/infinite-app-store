@@ -1,7 +1,12 @@
 import ChatToys
-import AppKit
 import WebKit
 import ObjectiveC
+
+#if os(macOS)
+import AppKit
+#else
+import UIKit
+#endif
 
 class InfiniteWebView: WKWebView {
     var onError: ((String) -> Void)?
@@ -181,19 +186,22 @@ extension InfiniteWebView: WKNavigationDelegate {
         }
 
         if url.host != "localhost" {
-            NSWorkspace.shared.open(url)
+            CrossPlatform.open(url: url)
             decisionHandler(.cancel)
         } else {
             decisionHandler(.allow)
         }
     }
 
+    #if os(macOS)
     // WKNavigationDelegate method to handle download
     func webView(_ webView: WKWebView, navigationAction: WKNavigationAction, didBecome download: WKDownload) {
         download.delegate = self
     }
+    #endif
 }
 
+#if os(macOS)
 extension InfiniteWebView: WKDownloadDelegate {
     func download(_ download: WKDownload, decideDestinationUsing response: URLResponse, suggestedFilename: String, completionHandler: @escaping (URL?) -> Void) {
         let savePanel = NSSavePanel()
@@ -207,49 +215,66 @@ extension InfiniteWebView: WKDownloadDelegate {
         }
     }
 }
+#endif
+
 
 extension InfiniteWebView: WKUIDelegate {
     // Implement prompt, alert, etc
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
-//        let alert = NSAlert()
-//        alert.messageText = message
-//        alert.addButton(withTitle: "OK")
-//        // use async alert api
-//        alert.beginSheetModal(for: self.window!) { _ in
-//            completionHandler()
-//        }
+#if os(iOS)
+
+Task {
+    let (_, _) = await UIApplication.shared.prompt(title: "App", message: message, showTextField: false, placeholder: nil)
+    completionHandler()
+}
+
+#else
+
         let model = PromptDialogModel(title: "Alert", message: message, cancellable: false, hasTextField: false)
         Task { @MainActor in
             let result = await model.run()
             completionHandler()
         }
+        #endif
     }
 
     func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
+        #if os(iOS)
+
+        Task {
+            let (ok, _) = await UIApplication.shared.prompt(title: "App", message: message, showTextField: false, placeholder: nil)
+            completionHandler(ok)
+        }
+
+        #else
         let model = PromptDialogModel(title: "Alert", message: message, cancellable: true, hasTextField: false)
         Task { @MainActor in
             let result = await model.run()
             completionHandler(!result.cancelled)
         }
-//        let alert = NSAlert()
-//        alert.messageText = message
-//        alert.addButton(withTitle: "OK")
-//        alert.addButton(withTitle: "Cancel")
-//        // use async alert api
-//        alert.beginSheetModal(for: self.window!) { response in
-//            completionHandler(response == .alertFirstButtonReturn)
-//        }
+        #endif
     }
 
     func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
+#if os(iOS)
+
+Task {
+    let (ok, text) = await UIApplication.shared.prompt(title: "App", message: prompt, showTextField: true, placeholder: nil)
+    completionHandler(ok ? text : nil)
+}
+
+#else
+
         let model = PromptDialogModel(title: "Alert", message: prompt, cancellable: true, hasTextField: true, defaultText: defaultText ?? "")
         Task { @MainActor in
             let result = await model.run()
             completionHandler(result.cancelled ? nil : result.text)
         }
+        #endif
     }
 
     // Implement file upload
+    #if os(macOS)
     func webView(_ webView: WKWebView, runOpenPanelWith parameters: WKOpenPanelParameters, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping ([URL]?) -> Void) {
         let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = parameters.allowsMultipleSelection
@@ -263,4 +288,5 @@ extension InfiniteWebView: WKUIDelegate {
             }
         }
     }
+    #endif
 }

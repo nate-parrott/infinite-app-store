@@ -1,28 +1,9 @@
 import SwiftUI
 import AppKit
 
-enum WindowControlAction: Equatable {
-    case minimize
-    case maximize
-    case close
-}
-
 // NSWindow subclass that displays a SwiftUI view and provides it with an environment key to perform window control actions
 // The swiftUI view should be borderless and shadowless, without a title bar. You need to override canBecomeKey
 // Use a NSHostingController as the contentViewController
-
-// Define environment key
-struct WindowActionHandlerKey: EnvironmentKey {
-    static var defaultValue: (WindowControlAction) -> Void = { _ in }
-}
-
-// Define environment value
-extension EnvironmentValues {
-    var windowActionHandler: (WindowControlAction) -> Void {
-        get { self[WindowActionHandlerKey.self] }
-        set { self[WindowActionHandlerKey.self] = newValue }
-    }
-}
 
 class BorderlessSwiftUIWindow<V: View>: NSWindow {
 
