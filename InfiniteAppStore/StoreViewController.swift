@@ -1,6 +1,7 @@
 import SwiftUI
 import AppKit
 
+// TODO: Remove this?
 class StoreViewController: AppViewController {
 //    let vc = NSHostingController(rootView: StoreView())
 //

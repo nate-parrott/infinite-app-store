@@ -113,7 +113,7 @@ extension View {
             .clipShape(.rect)
     }
 
-    fileprivate func recessed95Effect() -> some View {
+    func recessed95Effect() -> some View {
         depthBorder(topLeftColor: Color.black.opacity(0.5), bottomRightColor: Color.white, offset: 1.5)
     }
 }
@@ -160,7 +160,7 @@ struct InstallShield: View {
             }
             .overlay(alignment: .bottomTrailing) {
                 VStack(alignment: .leading, spacing: 14, content: {
-                    Text("Generating Program...")
+                    Text("Installing Program...")
                     ProgressBar95(progress: progress)
                         .animation(.linear(duration: 0.3), value: progress)
                         .frame(width: 200)
@@ -176,6 +176,7 @@ struct InstallShield: View {
 struct Window95<V: View>: View {
     var title: String
     var onControlAction: (WindowControlAction) -> Void
+    var additionalAccessoryIcon: AnyView? = nil
     @ViewBuilder var content: () -> V
 
     var body: some View {
@@ -196,9 +197,15 @@ struct Window95<V: View>: View {
                 .withBoldFont95()
                 .foregroundStyle(.white)
                 .padding(.leading, 5)
+                .lineLimit(1)
 
             Spacer()
             HStack(spacing: 0) {
+                if let additionalAccessoryIcon {
+                    additionalAccessoryIcon
+                    Spacer().frame(width: 2)
+                }
+
                 Button(action: { onControlAction(.minimize) }) {
                     Image("minimize")
                 }

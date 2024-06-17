@@ -25,6 +25,7 @@ extension EnvironmentValues {
 }
 
 class BorderlessSwiftUIWindow<V: View>: NSWindow {
+
     init(resizable: Bool = true, dialog: Bool = false, _ view: () -> V) {
         let currentMainWindowCenter: CGPoint? = NSApplication.shared.mainWindow?.frame.center
 
@@ -33,9 +34,8 @@ class BorderlessSwiftUIWindow<V: View>: NSWindow {
             styleMask.insert(.resizable)
         }
         super.init(contentRect: .zero, styleMask: styleMask, backing: .buffered, defer: true)
-        let rootView: some View = view().environment(\.windowActionHandler, self.handleWindowAction)
-        let hostingController = NSHostingController(rootView: rootView)
-        self.contentViewController = hostingController
+        rootVC = NSHostingController(rootView: RootView(content: view(), handleWindowAction: handleWindowAction(_:)))
+        self.contentViewController = rootVC
         self.isMovableByWindowBackground = true
         self.titleVisibility = .hidden
         self.titlebarAppearsTransparent = true
@@ -45,7 +45,7 @@ class BorderlessSwiftUIWindow<V: View>: NSWindow {
         self.hasShadow = false
         self.level = dialog ? .floating : .normal
         // Size to fit the swiftui view
-        let size = hostingController.view.intrinsicContentSize
+        let size = rootVC.view.intrinsicContentSize
         self.setContentSize(size)
 
         if dialog, let currentMainWindowCenter = currentMainWindowCenter {
@@ -53,6 +53,23 @@ class BorderlessSwiftUIWindow<V: View>: NSWindow {
             self.setFrameOrigin(CGPoint(x: currentMainWindowCenter.x - size.width / 2, y: currentMainWindowCenter.y - size.height / 2))
         } else {
             self.center()
+        }
+    }
+
+    var rootView: V {
+        get { rootVC.rootView.content }
+        set { rootVC.rootView.content = newValue }
+    }
+
+    private var rootVC: NSHostingController<RootView>!
+
+    private struct RootView: View {
+        var content: V
+        var handleWindowAction: (WindowControlAction) -> Void
+
+        var body: some View {
+            content
+                .environment(\.windowActionHandler, self.handleWindowAction)
         }
     }
 

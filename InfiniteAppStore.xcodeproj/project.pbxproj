@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F0C14812C1A907700574D1E /* SwiftUI+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0C14802C1A907700574D1E /* SwiftUI+Convenience.swift */; };
 		5F7D90212C14FF130090D0C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D90202C14FF130090D0C7 /* AppDelegate.swift */; };
 		5F7D90232C14FF130090D0C7 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D90222C14FF130090D0C7 /* AppViewController.swift */; };
 		5F7D90252C14FF140090D0C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F7D90242C14FF140090D0C7 /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F0C14802C1A907700574D1E /* SwiftUI+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Convenience.swift"; sourceTree = "<group>"; };
 		5F7D901D2C14FF130090D0C7 /* InfiniteAppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfiniteAppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F7D90202C14FF130090D0C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F7D90222C14FF130090D0C7 /* AppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			children = (
 				5F7D90382C1505760090D0C7 /* Prompt.swift */,
 				5F7D903E2C1527F60090D0C7 /* DataStore.swift */,
+				5F0C14802C1A907700574D1E /* SwiftUI+Convenience.swift */,
 				5FD58E412C1661A40044E094 /* PerFrameAnimationView.swift */,
 				5FD58E302C15461C0044E094 /* Color.swift */,
 				5F7D903F2C1527F60090D0C7 /* DataStore+SwiftUI.swift */,
@@ -252,6 +255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F0C14812C1A907700574D1E /* SwiftUI+Convenience.swift in Sources */,
 				5F7D90422C1527F60090D0C7 /* DataStore.swift in Sources */,
 				5F7D904A2C1529EA0090D0C7 /* ProgramGen.swift in Sources */,
 				5FD58E4F2C17ED930044E094 /* Icons.swift in Sources */,

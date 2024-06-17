@@ -2,28 +2,6 @@ import SwiftUI
 import Foundation
 import AppKit
 
-/*
- class BorderlessSwiftUIWindow<V: View>: NSWindow {
-     init(resizable: Bool = true, dialog: Bool = false, _ view: () -> V)...
- */
-
-/*
- struct Demo95: View {
-     var body: some View {
-         Window95(title: "Hello World", onControlAction: {_ in ()}) {
-             Button(action: {}) {
-                 Text("Hi there!")
-                     .withFont95()
-             }
-             .padding()
-         }
-         .padding()
-         .frame(width: 400)
-         .background(Color.green)
-     }
- }
- */
-
 struct PromptDialogModel: Equatable {
     var title: String
     var message: String

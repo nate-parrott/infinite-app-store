@@ -33,7 +33,7 @@ enum Prompts {
     </style>
 
     # Icons
-    There are a few built-in icons you can use. You should pick one for the app itself. You can also reference them in your code like this: `/static/Icons/address_book.png`.
+    There are a few built-in icons you can use. You should pick one for the app itself. You can also reference them in your code like this: `/icons/address_book.png`.
     Use only these icon identifiers:
     ```
     \(Icons.iconNames.joined(separator: ", "))

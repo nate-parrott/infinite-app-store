@@ -11,7 +11,7 @@ struct AppWindowContentView: View {
     @State private var errors = [String]()
 
     var body: some View {
-        Window95(title: program?.title.nilIfEmpty ?? "App", onControlAction: onAction ?? { _ in () }) {
+        Window95(title: program?.title.nilIfEmpty ?? "App", onControlAction: onAction ?? { _ in () }, additionalAccessoryIcon: AnyView(contactDevButton)) {
             AppViewRepresentable(id: id, onError: { errors.append($0) })
             .overlay(alignment: .bottomTrailing) {
                 if errors.count > 0 {
@@ -31,6 +31,14 @@ struct AppWindowContentView: View {
         .edgesIgnoringSafeArea(.all)
         .onReceive(AppStore.shared.publisher.map { $0.programs[id] }, perform: { self.program = $0 })
     }
+
+    @ViewBuilder var contactDevButton: some View {
+        Button(action: { contactDevForProgram(id: id) }) {
+            Text("?").bold()
+                .foregroundStyle(Color.black)
+        }
+        .help("Contact Developer")
+    }
 }
 
 private struct ErrorView: View {
@@ -42,7 +50,7 @@ private struct ErrorView: View {
         VStack {
             Text("Encountered error :(")
             HStack {
-                Button(action: {}) {
+                Button(action: reportErrors) {
                     Text("Report to Developer")
                 }
                 Button(action: onDismiss) {
@@ -55,6 +63,23 @@ private struct ErrorView: View {
         .background {
             Color.black.opacity(0.2)
                 .offset(x: 3, y: 3)
+        }
+    }
+
+    private func reportErrors() {
+        if errors.count == 0 { return }
+        var lines = ["I'm seeing errors:"]
+        lines += errors.map { "> " + $0 }
+        lines.append("Why the errors? Write a few words explaining why, then fix the app.")
+        let msg = lines.joined(separator: "\n")
+
+        _ = getOrCreateContactDevWindow(id: id)
+        // HACK: Avoid race condition where thread isn't init'd before view appears
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            guard let thread = ContactDevThread.all.compactMap(\.value).first(where: { $0.program?.id == id }) else {
+                return
+            }
+            thread.send(message: msg)
         }
     }
 }

@@ -16,7 +16,8 @@ class Server {
 
     func start() {
         server["/static/:path"] = shareFilesFromDirectory(Bundle.main.url(forResource: "StaticWebFiles", withExtension: nil)!.path)
-        
+        server["/icons/:path"] = shareFilesFromDirectory(Bundle.main.url(forResource: "StaticWebFiles", withExtension: nil)!.appendingPathComponent("Icons").path)
+
 //        server["/"] = { request in
 //            return HttpResponse.ok(.text("<h1>heeeyyy</h1>"))
 //        }

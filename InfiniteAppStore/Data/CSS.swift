@@ -103,6 +103,8 @@ enum CSS {
       min-width: 75px;
       min-height: 23px;
       padding: 0 12px;
+
+      outline: none;
     }
 
     button.default,

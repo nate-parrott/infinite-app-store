@@ -7,7 +7,6 @@ class InfiniteWebView: WKWebView {
     var onError: ((String) -> Void)?
 
     init() {
-        _ = Server.shared
         let config = WKWebViewConfiguration()
         let prefs = WKPreferences()
         // Use undocumented api to enable devtools:
@@ -171,6 +170,11 @@ class BridgedFunction<Params>: NSObject, WKScriptMessageHandlerWithReply {
 
 extension InfiniteWebView: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if !(navigationAction.targetFrame?.isMainFrame ?? false) {
+            decisionHandler(.allow)
+            return
+        }
+
         guard let url = navigationAction.request.url else {
             decisionHandler(.allow)
             return
