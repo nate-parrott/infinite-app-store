@@ -16,7 +16,7 @@ extension UIApplication {
             callback(false, nil)
         }))
         dialog.addAction(UIAlertAction(title: "Okay", style: .default, handler: { _ in
-            let text = dialog.textFields!.first!.text
+            let text = dialog.textFields?.first?.text
             callback(true, text)
         }))
         vc.present(dialog, animated: true, completion: nil)

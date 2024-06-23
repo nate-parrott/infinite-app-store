@@ -2,7 +2,32 @@ import Foundation
 import ChatToys
 
 enum Prompts {
-    static let generate = """
+    private static var mobileTheming: String {
+        #if os(iOS)
+        return "This app should visually look like Windows 98 and use vintage design patterns, BUT be responsive to fit on a mobile device."
+        #else
+        return ""
+        #endif
+    }
+
+    static let llmApiDoc = """
+    // use llmStream to stream results from a large-language AI model
+    // `result` contains the full string up to this point; when done is true, result will be the full answer.
+    function llmStream(prompt: string, callback: (result: string, done: bool) => void): void
+    """
+
+    static let appleScriptApiDoc = """
+    // use appleScript to execute standard applescript to control a user's computer
+    async function appleScript(prompt: string) => string | null
+    """
+
+    static func generationPrompt(title: String, subtitle: String, llmEnabled: Bool, appleScriptEnabled: Bool) -> String {
+        let apis: [String?] = [
+            llmEnabled ? llmApiDoc : nil,
+            appleScriptEnabled ? appleScriptApiDoc : nil,
+        ]
+        let apiStr = apis.compactMap { $0 }.joined(separator: "\n\n")
+        return """
     You're a skilled software engineer developing simple local apps using HTML, CSS and JS.
     Your apps run within a webview with CORS disabled.
 
@@ -16,9 +41,7 @@ enum Prompts {
     There are no local resources provided on the domain.
 
     # Extra APIs
-    // use this to stream results from a large-language AI model
-    // `result` contains the full string up to this point; when done is true, result will be the full answer.
-    function llmStream(prompt: string, callback: (result: string, done: bool) => void): void
+    \(apiStr.nilIfEmpty ?? "None")
 
     # Theming
     Make your app look like a retro Windows 98 ap.
@@ -26,6 +49,7 @@ enum Prompts {
     Use ordinary HTML elements (input, textarea, select, button, overflow: scroll, etc), and they'll automatically get this styling.
     Do not reference external assets.
     You don't need to draw the window title bar; it will be drawn for you.
+    \(mobileTheming)
 
     Here's an excerpt from the stylesheet, which is automatically included:
     <style>
@@ -41,8 +65,8 @@ enum Prompts {
 
     # App Prompt
     Here is the prompt:
-    App Name: '[name]'
-    App Description: '[description]'
+    App Name: '\(title)'
+    App Description: '\(subtitle)'
 
     Below, define the program as a JSON object containing the HTML/CSS/JS, and other app attributes:
 
@@ -57,6 +81,7 @@ enum Prompts {
 
     Write your app below:
     """
+    }
 }
 
 enum ProgramGenError: Error {
@@ -64,10 +89,8 @@ enum ProgramGenError: Error {
 }
 
 extension AppStore {
-    func generateProgram(id: String, title: String, subtitle: String) async throws {
-        let prompt = Prompts.generate
-        .replacingOccurrences(of: "[name]", with: title)
-        .replacingOccurrences(of: "[description]", with: subtitle)
+    func generateProgram(id: String, params: NewProgramParams) async throws {
+        let prompt = Prompts.generationPrompt(title: params.title, subtitle: params.subtitle, llmEnabled: params.llmEnabled, appleScriptEnabled: params.applescript)
 
         struct Output: Codable {
             let icon: String?
@@ -78,8 +101,10 @@ extension AppStore {
 
         AppStore.shared.modify { $0.modifyProgram(id: id, { 
             $0.installProgress = 0
-            $0.title = title
-            $0.subtitle = subtitle
+            $0.title = params.title
+            $0.subtitle = params.subtitle
+            $0.applescriptEnabled = params.applescript
+            $0.llmEnabled = params.llmEnabled
         }) }
 
         let llm = try await ChatGPT(credentials: .getOrPromptForCreds(), options: .init(model: .gpt4_omni, jsonMode: true))
@@ -92,8 +117,8 @@ extension AppStore {
                     program.html = partial.html ?? ""
                     program.css = partial.css ?? ""
                     program.js = ""
-                    program.title = title
-                    program.subtitle = subtitle
+                    program.title = params.title
+                    program.subtitle = params.subtitle
                     program.computeEstimatedInstallProgress(jsLen: partial.js?.count ?? 0)
                 }
             }

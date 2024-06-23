@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5F0C14812C1A907700574D1E /* SwiftUI+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0C14802C1A907700574D1E /* SwiftUI+Convenience.swift */; };
+		5F2B55852C27BDD400BA44DF /* NewProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B55842C27BDD400BA44DF /* NewProgram.swift */; };
+		5F2B55892C27C62100BA44DF /* Scripting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B55882C27C62100BA44DF /* Scripting.swift */; };
 		5F7D90212C14FF130090D0C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D90202C14FF130090D0C7 /* AppDelegate.swift */; };
 		5F7D90232C14FF130090D0C7 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D90222C14FF130090D0C7 /* AppViewController.swift */; };
 		5F7D90252C14FF140090D0C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F7D90242C14FF140090D0C7 /* Assets.xcassets */; };
@@ -60,6 +62,11 @@
 		5F7F2FF12C1FD380008E16C7 /* AppMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F2FF02C1FD380008E16C7 /* AppMenuView.swift */; };
 		5F7F2FF22C1FD380008E16C7 /* AppMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F2FF02C1FD380008E16C7 /* AppMenuView.swift */; };
 		5F7F2FF32C1FD3A0008E16C7 /* Prompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D90382C1505760090D0C7 /* Prompt.swift */; };
+		5F7F2FF52C1FD5D2008E16C7 /* MobileAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F2FF42C1FD5D2008E16C7 /* MobileAppView.swift */; };
+		5F7F2FF62C1FD5D2008E16C7 /* MobileAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F2FF42C1FD5D2008E16C7 /* MobileAppView.swift */; };
+		5F7F2FF82C1FD6FD008E16C7 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F2FF72C1FD6FD008E16C7 /* AppView.swift */; };
+		5F7F2FF92C1FD6FD008E16C7 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F2FF72C1FD6FD008E16C7 /* AppView.swift */; };
+		5F7F2FFA2C1FDA66008E16C7 /* StaticWebFiles in Resources */ = {isa = PBXBuildFile; fileRef = 5FD58E462C1662C30044E094 /* StaticWebFiles */; };
 		5FD58E2F2C1545ED0044E094 /* UI95.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD58E2E2C1545ED0044E094 /* UI95.swift */; };
 		5FD58E312C15461C0044E094 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD58E302C15461C0044E094 /* Color.swift */; };
 		5FD58E352C1547DD0044E094 /* MS Sans Serif.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FD58E342C1547DD0044E094 /* MS Sans Serif.ttf */; };
@@ -78,6 +85,8 @@
 
 /* Begin PBXFileReference section */
 		5F0C14802C1A907700574D1E /* SwiftUI+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Convenience.swift"; sourceTree = "<group>"; };
+		5F2B55842C27BDD400BA44DF /* NewProgram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProgram.swift; sourceTree = "<group>"; };
+		5F2B55882C27C62100BA44DF /* Scripting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scripting.swift; sourceTree = "<group>"; };
 		5F7D901D2C14FF130090D0C7 /* InfiniteAppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfiniteAppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F7D90202C14FF130090D0C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F7D90222C14FF130090D0C7 /* AppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +119,8 @@
 		5F7F2FE22C1FCF73008E16C7 /* PromptDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptDialog.swift; sourceTree = "<group>"; };
 		5F7F2FED2C1FD1E8008E16C7 /* WindowControlAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowControlAction.swift; sourceTree = "<group>"; };
 		5F7F2FF02C1FD380008E16C7 /* AppMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMenuView.swift; sourceTree = "<group>"; };
+		5F7F2FF42C1FD5D2008E16C7 /* MobileAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileAppView.swift; sourceTree = "<group>"; };
+		5F7F2FF72C1FD6FD008E16C7 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		5FD58E2E2C1545ED0044E094 /* UI95.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI95.swift; sourceTree = "<group>"; };
 		5FD58E302C15461C0044E094 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		5FD58E342C1547DD0044E094 /* MS Sans Serif.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MS Sans Serif.ttf"; sourceTree = "<group>"; };
@@ -177,6 +188,9 @@
 				5F7D903A2C1505FE0090D0C7 /* Settings.swift */,
 				5F7D90322C15043C0090D0C7 /* InfiniteWebView.swift */,
 				5F7F2FF02C1FD380008E16C7 /* AppMenuView.swift */,
+				5F2B55842C27BDD400BA44DF /* NewProgram.swift */,
+				5F7F2FF42C1FD5D2008E16C7 /* MobileAppView.swift */,
+				5F7F2FF72C1FD6FD008E16C7 /* AppView.swift */,
 				5FD58E3F2C163F560044E094 /* Server.swift */,
 				5F7D904C2C153E940090D0C7 /* ContactDev.swift */,
 				5FD58E462C1662C30044E094 /* StaticWebFiles */,
@@ -195,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				5F7D903E2C1527F60090D0C7 /* DataStore.swift */,
+				5F2B55882C27C62100BA44DF /* Scripting.swift */,
 				5F7F2FED2C1FD1E8008E16C7 /* WindowControlAction.swift */,
 				5F7F2FC62C1FCE1E008E16C7 /* CrossPlatform.swift */,
 				5F0C14802C1A907700574D1E /* SwiftUI+Convenience.swift */,
@@ -381,6 +396,7 @@
 				5F7F2FD62C1FCE99008E16C7 /* MS Sans Serif.ttf in Resources */,
 				5F7F2FBF2C1FCDBF008E16C7 /* Preview Assets.xcassets in Resources */,
 				5F7F2FBC2C1FCDBF008E16C7 /* Assets.xcassets in Resources */,
+				5F7F2FFA2C1FDA66008E16C7 /* StaticWebFiles in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,17 +415,21 @@
 				5F7F2FF12C1FD380008E16C7 /* AppMenuView.swift in Sources */,
 				5F7F2FC72C1FCE1E008E16C7 /* CrossPlatform.swift in Sources */,
 				5F7D90372C1504AA0090D0C7 /* WebViewHack.m in Sources */,
+				5F7F2FF52C1FD5D2008E16C7 /* MobileAppView.swift in Sources */,
 				5F7F2FC52C1FCDFC008E16C7 /* ContactDevWindow.swift in Sources */,
 				5F7D90452C1527F60090D0C7 /* Task.swift in Sources */,
 				5FD58E312C15461C0044E094 /* Color.swift in Sources */,
 				5FD58E4D2C17E7760044E094 /* StatusMenu.swift in Sources */,
+				5F2B55852C27BDD400BA44DF /* NewProgram.swift in Sources */,
 				5F7D90232C14FF130090D0C7 /* AppViewController.swift in Sources */,
 				5F7D904F2C153EBB0090D0C7 /* StoreViewController.swift in Sources */,
 				5F7D904D2C153E940090D0C7 /* ContactDev.swift in Sources */,
+				5F7F2FF82C1FD6FD008E16C7 /* AppView.swift in Sources */,
 				5FD58E2F2C1545ED0044E094 /* UI95.swift in Sources */,
 				5FD58E3B2C1639EA0044E094 /* AppNSWindow.swift in Sources */,
 				5FD58E492C167C8F0044E094 /* CSS.swift in Sources */,
 				5F7F2FEE2C1FD1E8008E16C7 /* WindowControlAction.swift in Sources */,
+				5F2B55892C27C62100BA44DF /* Scripting.swift in Sources */,
 				5F7D90442C1527F60090D0C7 /* Queue.swift in Sources */,
 				5FD58E402C163F560044E094 /* Server.swift in Sources */,
 				5F7D90482C15280A0090D0C7 /* AppState.swift in Sources */,
@@ -427,6 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F7F2FF62C1FD5D2008E16C7 /* MobileAppView.swift in Sources */,
 				5F7F2FEF2C1FD1E8008E16C7 /* WindowControlAction.swift in Sources */,
 				5F7F2FBA2C1FCDBE008E16C7 /* ContentView.swift in Sources */,
 				5F7F2FD02C1FCE8C008E16C7 /* String.swift in Sources */,
@@ -446,6 +467,7 @@
 				5F7F2FCF2C1FCE8A008E16C7 /* Queue.swift in Sources */,
 				5F7F2FCD2C1FCE83008E16C7 /* Color.swift in Sources */,
 				5F7F2FC82C1FCE1E008E16C7 /* CrossPlatform.swift in Sources */,
+				5F7F2FF92C1FD6FD008E16C7 /* AppView.swift in Sources */,
 				5F7F2FD22C1FCE91008E16C7 /* AppState.swift in Sources */,
 				5F7F2FCE2C1FCE86008E16C7 /* DataStore+SwiftUI.swift in Sources */,
 				5F7F2FCB2C1FCE7F008E16C7 /* SwiftUI+Convenience.swift in Sources */,
@@ -612,6 +634,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InfiniteAppStore/Info.plist;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Apps can use AppleScript to control other apps.";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Apps may use the camera";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Apps may use your location";
@@ -649,6 +672,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InfiniteAppStore/Info.plist;
+				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Apps can use AppleScript to control other apps.";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Apps may use the camera";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Apps may use your location";

@@ -12,6 +12,11 @@ struct _AppMenuView: View {
     var programs: [Program]
 
     @State private var hovered: Program.ID? = nil
+    @State private var sheet: ProgramSheetModel?
+
+    struct ProgramSheetModel: Equatable, Identifiable {
+        var id: String
+    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -33,27 +38,32 @@ struct _AppMenuView: View {
         }
         .background(Color.gray95)
         .with95DepthEffect(pushed: false)
+        #if os(macOS)
         .frame(width: 250)
-        .modifier(Demo95OuterStyles())
+        #endif
+        .modifier(Styling95())
+        .sheet(item: $sheet) { sheet in
+            MobileAppView(id: sheet.id)
+        }
     }
 
     private func newProgram() {
         Task {
-            guard let title = await prompt(question: "Choose a name for your app:", title: "Create App (1/2)"),
-                  let subtitle = await prompt(question: "Describe your app briefly:", title: "Create App (2/2)")
-            else {
-                return
-            }
+            guard let params = await promptForNewProgramDetails() else { return }
             let id = UUID().uuidString
             open(programId: id)
-            try await AppStore.shared.generateProgram(id: id, title: title, subtitle: subtitle)
+            try? await AppStore.shared.generateProgram(id: id, params: params)
         }
     }
 
     private func open(programId: String) {
+        #if os(iOS)
+        sheet = .init(id: programId)
+        #else
         DispatchQueue.main.async {
             NSApp.openOrFocusProgram(id: programId)
         }
+        #endif
     }
 
     @ViewBuilder func cell(program: Program) -> some View {
@@ -80,7 +90,7 @@ struct StatusMenuItem<L: View>: View {
             label()
         }
         .padding(.horizontal, 6)
-        .frame(height: 34)
+        .frame(height: isMac() ? 34 : 44)
         .frame(maxWidth: .infinity, alignment: .leading)
         .foregroundStyle(hovered ? Color.white : Color.black)
         .background {

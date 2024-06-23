@@ -41,49 +41,6 @@ struct AppWindowContentView: View {
     }
 }
 
-private struct ErrorView: View {
-    var errors: [String]
-    var id: String
-    var onDismiss: () -> Void
-
-    var body: some View {
-        VStack {
-            Text("Encountered error :(")
-            HStack {
-                Button(action: reportErrors) {
-                    Text("Report to Developer")
-                }
-                Button(action: onDismiss) {
-                    Text("Ignore")
-                }
-            }
-        }
-        .padding()
-        .with95DepthEffect(pushed: false)
-        .background {
-            Color.black.opacity(0.2)
-                .offset(x: 3, y: 3)
-        }
-    }
-
-    private func reportErrors() {
-        if errors.count == 0 { return }
-        var lines = ["I'm seeing errors:"]
-        lines += errors.map { "> " + $0 }
-        lines.append("Why the errors? Write a few words explaining why, then fix the app.")
-        let msg = lines.joined(separator: "\n")
-
-        _ = getOrCreateContactDevWindow(id: id)
-        // HACK: Avoid race condition where thread isn't init'd before view appears
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            guard let thread = ContactDevThread.all.compactMap(\.value).first(where: { $0.program?.id == id }) else {
-                return
-            }
-            thread.send(message: msg)
-        }
-    }
-}
-
 class AppViewController: NSViewController {
     var programID: String? {
         didSet {
@@ -124,7 +81,8 @@ class AppViewController: NSViewController {
                 else {
                     return
                 }
-                try await AppStore.shared.generateProgram(id: programID, title: title, subtitle: subtitle)
+                try await AppStore.shared.generateProgram(id: programID, params: .init(title: title, subtitle: subtitle))
+//                try await AppStore.shared.generateProgram(id: programID, title: title, subtitle: subtitle)
             } catch {
                 print("[Program gen] Error: \(error)")
             }
@@ -149,93 +107,5 @@ class AppViewController: NSViewController {
     override func viewDidLayout() {
         super.viewDidLayout()
         mainView?.frame = view.bounds
-    }
-}
-
-private struct AppViewRepresentable: NSViewRepresentable {
-    var id: String
-    var onError: ((String) -> Void)?
-
-    func makeNSView(context: Context) -> AppView {
-        AppView(id: id)
-    }
-
-    func updateNSView(_ nsView: AppView, context: Context) {
-        nsView.webView.onError = onError
-        // Can't update id
-    }
-}
-
-private class AppView: NSView {
-    let webView = InfiniteWebView()
-    private var subscriptions = Set<AnyCancellable>()
-    let id: String
-
-    init(id: String) {
-        self.id = id
-        super.init(frame: .zero)
-
-        AppStore.shared.publisher.map { $0.programs[id] }
-            .removeDuplicates()
-            .sink { [weak self] program in
-                self?.program = program
-            }
-            .store(in: &subscriptions)
-
-        AppStore.shared.publisher.map { $0.programs[id]?.fullCode ?? "" }
-            .removeDuplicates()
-            .sink { [weak self] code in
-                self?.code = code
-            }
-            .store(in: &subscriptions)
-
-        addSubview(webView)
-    }
-
-    override func layout() {
-        super.layout()
-        webView.frame = bounds
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    private var program: Program? {
-        didSet {
-            // no op
-            self.window?.title = program?.title ?? "App"
-        }
-    }
-
-    override func viewDidMoveToWindow() {
-        super.viewDidMoveToWindow()
-        self.window?.title = program?.title ?? "App"
-    }
-
-    private var code: String? {
-        didSet {
-            if code != oldValue, let code {
-                webView.loadHTMLString(code, baseURL: URL(string: "http://localhost:50082")!)
-            }
-        }
-    }
-}
-
-extension Program {
-    var fullCode: String {
-        let lines = [
-            html,
-            "<style>",
-            CSS.baseCSS,
-            "</style>",
-            "<style>",
-            css,
-            "</style>",
-            "<script>",
-            js,
-            "</script>",
-        ]
-        return lines.joined(separator: "\n")
     }
 }

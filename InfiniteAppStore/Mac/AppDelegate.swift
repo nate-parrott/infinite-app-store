@@ -8,6 +8,10 @@
 import Cocoa
 import ChatToys
 
+func isPreview() -> Bool {
+    return ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
+}
+
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 //    @IBAction func showStoreVC(_ sender: Any?) {
@@ -29,8 +33,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        _ = Server.shared
-        _ = StatusMenuManager.shared
+        if !isPreview() {
+            _ = Server.shared
+            _ = StatusMenuManager.shared
+        }
         // Insert code here to initialize your application
     }
 

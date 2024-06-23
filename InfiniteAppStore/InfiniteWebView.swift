@@ -11,6 +11,9 @@ import UIKit
 class InfiniteWebView: WKWebView {
     var onError: ((String) -> Void)?
 
+    var applescriptEnabled = false
+    var llmEnabled = false // allow app to call LLM
+
     init() {
         let config = WKWebViewConfiguration()
         let prefs = WKPreferences()
@@ -27,8 +30,11 @@ class InfiniteWebView: WKWebView {
             const fullErrString = error ? error.stack : message;
             window.webkit.messageHandlers.reportError.postMessage(Array.from(arguments).join(' '));
         };
+
+        const oldError = console.error;
         console.error = function() {
             window.webkit.messageHandlers.reportError.postMessage(Array.from(arguments).join(' '));
+            oldError.apply(this, arguments);
         };
 
         // Set up multi-callback bridge
@@ -59,6 +65,11 @@ class InfiniteWebView: WKWebView {
         function llmStream(prompt, callback) {
             window.__call_multi_callback_function('llmStream', prompt, callback);
         }
+
+        async function appleScript(script) {
+            const result = await window.webkit.messageHandlers.appleScript.postMessage(script);
+            return result;
+        }
         """
         let script = WKUserScript(source: userScript, injectionTime: .atDocumentStart, forMainFrameOnly: false)
         config.userContentController.addUserScript(script)
@@ -73,8 +84,37 @@ class InfiniteWebView: WKWebView {
             callback(.success("OK"))
         }
 
+        config.userContentController.bridgeFunction(name: "appleScript", paramType: String.self) { [weak self] code, callback in
+            enum ScriptError: Error {
+                case deallocated
+                case blocked
+                case scriptError(String)
+            }
+            guard let self else {
+                callback(.failure(ScriptError.deallocated))
+                return
+            }
+            guard self.applescriptEnabled else {
+                callback(.failure(ScriptError.blocked))
+                return
+            }
+            Task {
+                print("[Applescript] Running: \n`\(code)\n`")
+                do {
+                    let result = try await Scripting.runAppleScript(script: code)
+                    print("[Applescript] Result: \n`\(result ?? "")\n`")
+                    callback(.success(result ?? NSNull()))
+                } catch {
+                    print("[Applescript] Error: \n`\(error)\n`")
+                    self.onError?("\(error)")
+                    callback(.failure(ScriptError.scriptError("\(error)")))
+                }
+            }
+        }
+
         // Param 1: prompt; param 2: name of calback function
-        config.userContentController.bridgeMultiCallbackFunction(name: "llmStream", paramType: String.self, webview: self) { prompt, emit, done in
+        config.userContentController.bridgeMultiCallbackFunction(name: "llmStream", paramType: String.self, webview: self) { [weak self] prompt, emit, done in
+            guard let self, self.llmEnabled else { return }
             Task {
                 do {
                     print("[LLMStream]: Prompting:\n\(prompt)")

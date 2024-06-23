@@ -11,6 +11,8 @@ struct Program: Equatable, Codable, Identifiable {
     var colorHex: String = "0000ff"
     var installProgress: Double?
     var iconName: String = "executable"
+    var applescriptEnabled = false
+    var llmEnabled = false
 }
 
 struct AppState: Equatable, Codable {

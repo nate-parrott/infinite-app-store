@@ -34,13 +34,40 @@ extension Font {
     static var boldBody95: Font = Font.custom(Self.boldFont95Name, size: 15)
 }
 
-struct Demo95OuterStyles: ViewModifier {
+struct Styling95: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.body95)
             .background(Color.gray95)
             .colorScheme(.light)
             .buttonStyle(ButtonStyle95())
+            .toggleStyle(ToggleStyle95())
+            .textFieldStyle(TextFieldStyle95())
+    }
+}
+
+struct ToggleStyle95: ToggleStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        HStack {
+            ZStack {
+                if configuration.isOn {
+                    Image("check")
+                        .scaleEffect(1.3)
+                } else if configuration.isMixed {
+                    Text("-")
+                }
+            }
+            .frame(both: 17)
+            .background(.white)
+            .depthBorder(topLeftColor: Color.black, bottomRightColor: Color(hex: 0xC0C0C0), offset: 1.5)
+            .depthBorder(topLeftColor: Color(hex: 0x808080), bottomRightColor: Color.white, offset: 1.5)
+
+            configuration.label
+                .font(.body95)
+        }
+        .onTapGesture {
+            configuration.isOn = !configuration.isOn
+        }
     }
 }
 
@@ -108,12 +135,14 @@ extension View {
             .overlay {
                 ZStack {
                     Rectangle()
-                        .stroke(bottomRightColor, lineWidth: offset)
+                        .strokeBorder(bottomRightColor, lineWidth: offset)
                         .offset(x: -offset, y: -offset)
+                        .padding(-offset)
 
                     Rectangle()
-                        .stroke(topLeftColor, lineWidth: offset)
+                        .strokeBorder(topLeftColor, lineWidth: offset)
                         .offset(x: offset, y: offset)
+                        .padding(-offset)
                 }
             }
             .clipShape(.rect)
@@ -194,7 +223,7 @@ struct Window95<V: View>: View {
         .background(Color.gray95)
         .depthBorder(topLeftColor: Color.white, bottomRightColor: Color(white: 0.5), offset: 1.5)
         .depthBorder(topLeftColor: Color(hex: 0xDBDBDB), bottomRightColor: Color.black, offset: 1.5)
-        .modifier(Demo95OuterStyles())
+        .modifier(Styling95())
     }
 
     @ViewBuilder var titleBar: some View {
@@ -223,7 +252,7 @@ struct Window95<V: View>: View {
                     Image("close")
                 }
             }
-            .buttonStyle(ButtonStyle95(height: 26, width: 28, outerBorder: false))
+            .buttonStyle(ButtonStyle95(height: isMac() ? 26 : 44, width: isMac() ? 28 : 44, outerBorder: false))
             .padding(.trailing, -1)
         }
         .padding(4)
@@ -233,16 +262,47 @@ struct Window95<V: View>: View {
     }
 }
 
+struct TextFieldStyle95: TextFieldStyle {
+    func _body(configuration: TextField<Self._Label>) -> some View {
+        configuration
+            .textFieldStyle(.plain)
+            .padding(.horizontal, 8)
+            .frame(minHeight: 30)
+            .background(Color.white)
+            .recessed95Effect()
+    }
+}
+
+//TextField("Message...", text: $message)
+//    .onSubmit {
+//        submit()
+//    }
+//    .textFieldStyle(.plain)
+//    .padding(.horizontal, 8)
+//    .frame(height: 30)
+//    .background(Color.white)
+//    .recessed95Effect()
+
 struct ButtonStyle95: ButtonStyle {
     var height: CGFloat = 30
     var width: CGFloat? = nil
     var outerBorder: Bool = true
 
+    @Environment(\.isEnabled) private var enabled
+
     func makeBody(configuration: Configuration) -> some View {
         let offset: CGFloat = configuration.isPressed ? 1.5 : 0
         configuration
             .label
+            .foregroundStyle(enabled ? Color.black : Color.white)
             .offset(x: offset, y: offset)
+            .overlay {
+                if !enabled {
+                    configuration.label
+                        .foregroundStyle(Color(hex: 0x808080))
+                        .offset(x: -1.5, y: -1.5)
+                }
+            }
             .withFont95()
             .frame(height: height)
             .padding(.horizontal, width != nil ? 0 : 12)
@@ -255,15 +315,21 @@ struct ButtonStyle95: ButtonStyle {
 struct Demo95: View {
     var body: some View {
         Window95(title: "Installing", onControlAction: {_ in ()}) {
-            InstallShield(name: "Rude Calculator", progress: 0.7)
-                .frame(height: 400)
-//            Button(action: {}) {
-//                Text("Hi there!")
-//                    .withFont95()
-//            }
-//            .padding()
-//
-//            ProgressBar95(progress: 0.5)
+//            InstallShield(name: "Rude Calculator", progress: 0.7)
+//                .frame(height: 400)
+            VStack(alignment: .leading, spacing: 14) {
+                Button(action: {}) {
+                    Text("Hi there!")
+                        .withFont95()
+                }
+
+                Toggle(isOn: .constant(true)) {
+                    Text("Enable Discombobulation")
+                }
+            }
+            .padding()
+
+            ProgressBar95(progress: 0.5)
 //            ProgressBar95(progress: 1)
         }
         .padding(60)

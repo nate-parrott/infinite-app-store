@@ -3,6 +3,7 @@ import SwiftUI
 
 struct ContactDevView: View {
     var programId: String
+    var initialMessage: String?
 
     @Environment(\.windowActionHandler) var onControlAction
 
@@ -12,7 +13,7 @@ struct ContactDevView: View {
                 WithSnapshot(store: AppStore.shared, snapshot: { $0.programs[programId] }) { prog in
                     if let prog = prog ?? nil {
                         Window95(title: "Contact Developer for \(prog.title)", onControlAction: onControlAction) {
-                            ContactDevViewInner(program: prog)
+                            ContactDevViewInner(program: prog, initialMessage: initialMessage)
                         }
                     }
                 }
@@ -23,6 +24,8 @@ struct ContactDevView: View {
 
 struct ContactDevViewInner: View {
     var program: Program
+    var initialMessage: String?
+
     @StateObject var thread = ContactDevThread()
 
     @State private var message = ""
@@ -65,6 +68,9 @@ struct ContactDevViewInner: View {
         .onAppear {
             thread.program = self.program
             thread.sendInitialMessages()
+            if let initialMessage {
+                thread.send(message: initialMessage)
+            }
         }
         .onChange(of: program, perform: { thread.program = $0 })
     }
@@ -264,9 +270,7 @@ class ContactDevThread: ObservableObject {
     func sendInitialMessages() {
         assert(program != nil)
         let program = self.program!
-        let system = Prompts.generate
-            .replacingOccurrences(of: "[name]", with: program.title)
-            .replacingOccurrences(of: "[description]", with: program.subtitle)
+        let system = Prompts.generationPrompt(title: program.title, subtitle: program.subtitle, llmEnabled: program.llmEnabled, appleScriptEnabled: program.applescriptEnabled)
 
         let welcomeMsg: String = [
             "What's up?",
