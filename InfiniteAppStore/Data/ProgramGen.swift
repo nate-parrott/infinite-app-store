@@ -79,7 +79,7 @@ enum Prompts {
     }
     ```
 
-    Write your app below:
+    Write your app below, in valid JSON syntax, with nothing else:
     """
     }
 }
@@ -107,7 +107,7 @@ extension AppStore {
             $0.llmEnabled = params.llmEnabled
         }) }
 
-        let llm = try await ChatGPT(credentials: .getOrPromptForCreds(), options: .init(model: .gpt4_omni, jsonMode: true))
+        let llm = try await Credentials.getOrPromptForCreds().jsonLLM
         var last: Output?
         for try await partial in llm.completeStreamingWithJSONObject(prompt: [LLMMessage(role: .system, content: prompt)], type: Output.self) {
             last = partial

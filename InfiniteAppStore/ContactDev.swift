@@ -157,12 +157,12 @@ class ContactDevThread: ObservableObject {
         case user(String)
         case hiddenUserMessage(String)
         case textReply(String)
-        case editProgram(EditProgramParams)
+        case editProgram(LLMMessage.FunctionCall, EditProgramParams)
         case error(String)
-        case editProgramConfirmation
+        case editProgramConfirmation(LLMMessage.FunctionCall)
 
         var asEditProgramParams: EditProgramParams? {
-            if case .editProgram(let editProgramParams) = self {
+            if case .editProgram(_, let editProgramParams) = self {
                 return editProgramParams
             }
             return nil
@@ -206,7 +206,7 @@ class ContactDevThread: ObservableObject {
                     }
                 }
 
-                let llm = try await ChatGPT(credentials: .getOrPromptForCreds(), options: .init(model: .gpt4_omni, jsonMode: false))
+                let llm = try await Credentials.getOrPromptForCreds().chatWithDevLLM
 
             mainloop:
                 while true {
@@ -230,7 +230,7 @@ class ContactDevThread: ObservableObject {
                     switch latest {
                     case .system, .user, .hiddenUserMessage, .error, .editProgramConfirmation: break mainloop // not expected
                     case .textReply: break mainloop // handled already
-                    case .editProgram(let editProgramParams):
+                    case .editProgram(let fnCall, let editProgramParams):
                         program.apply(editProgramParams)
                         try Task.checkCancellation()
                         await AppStore.shared.modifyAsync { state in
@@ -238,7 +238,7 @@ class ContactDevThread: ObservableObject {
                                 program.apply(editProgramParams)
                             }
                         }
-                        messages.append(.editProgramConfirmation)
+                        messages.append(.editProgramConfirmation(fnCall))
                         // continue
                     }
                 }
@@ -254,9 +254,9 @@ class ContactDevThread: ObservableObject {
         if let fn = llmMessage.functionCall {
             if fn.name == "edit_program" {
                 if let params = fn.decodeArguments(as: EditProgramParams.self, stream: true) {
-                    return .editProgram(params)
+                    return .editProgram(fn, params)
                 }
-                return .editProgram(EditProgramParams())
+                return .editProgram(fn, EditProgramParams())
             } else {
                 return nil
             }
@@ -280,10 +280,13 @@ class ContactDevThread: ObservableObject {
             "Feature request? Bug? What is it?",
         ].randomElement()!
 
+        let initialEditProgramParams = EditProgramParams(html: program.html, css: program.css, js: program.js, icon: program.iconName)
+        let initialEditProgramFakeFnCall = LLMMessage.FunctionCall(id: UUID().uuidString, name: "edit_program", arguments: initialEditProgramParams.jsonString)
+
         self.messages = [
             .system(system),
-            .editProgram(EditProgramParams(html: program.html, css: program.css, js: program.js, icon: program.iconName)),
-            .editProgramConfirmation,
+            .editProgram(initialEditProgramFakeFnCall, initialEditProgramParams),
+            .editProgramConfirmation(initialEditProgramFakeFnCall),
             .hiddenUserMessage("User entered the support chat. They may request edits to your program. Use the edit_program function to do this."),
             .textReply(welcomeMsg),
 
@@ -292,7 +295,7 @@ class ContactDevThread: ObservableObject {
 
     private var functions: [LLMFunction] {
         [
-            LLMFunction(name: "edit_program", description: "Update the code of your program. Only update fields you need to change. If, for example, you want to change JS but not HTML, only set the JS field. (This would replace existing JS)", parameters: [
+            LLMFunction(name: "edit_program", description: "Update the code of your program. Only update fields you need to change. If, for example, you want to change JS but not HTML, only set the JS field. (This would replace existing JS). You don't need to show the user the code first; just call this to fix it.", parameters: [
                 "js": .string(description: nil),
                 "css": .string(description: nil), 
                 "html": .string(description: nil),
@@ -326,12 +329,12 @@ class ContactDevThread: ObservableObject {
             return LLMMessage(role: .user, content: string)
         case .textReply(let string):
             return LLMMessage(role: .assistant, content: string)
-        case .editProgram(let editProgramParams):
-            return LLMMessage(role: .assistant, content: "", functionCall: LLMMessage.FunctionCall(name: "edit_program", arguments: editProgramParams.jsonString))
+        case .editProgram(let fnCall, _):
+            return LLMMessage(role: .assistant, content: "", functionCall: fnCall)
         case .error(let string):
             return LLMMessage(role: .system, content: "Error: \(string)")
-        case .editProgramConfirmation:
-            return LLMMessage(role: .function, content: "OK", nameOfFunctionThatProduced: "edit_program")
+        case .editProgramConfirmation(let fnCall):
+            return LLMMessage(functionResponses: [.init(id: fnCall.id, functionName: fnCall.name, text: "Edit saved")])
         }
     }
 }

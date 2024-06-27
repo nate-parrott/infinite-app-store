@@ -25,11 +25,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        }
 //    }
 
-    @IBAction func updateOpenAIKey(_ sender: Any?) {
-        DefaultsKeys.openAIKey.stringValue = ""
-        Task {
-            _ = try? await OpenAICredentials.getOrPromptForCreds()
-        }
+//    @IBAction func updateOpenAIKey(_ sender: Any?) {
+//        DefaultsKeys.openAIKey.stringValue = ""
+//        Task {
+//            _ = try? await OpenAICredentials.getOrPromptForCreds()
+//        }
+//    }
+
+    @IBAction func controlPanel(_ sender: Any?) {
+        showSettingsView()
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {

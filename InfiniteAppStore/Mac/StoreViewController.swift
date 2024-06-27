@@ -1,25 +1,25 @@
-import SwiftUI
-import AppKit
-
-// TODO: Remove this?
-class StoreViewController: AppViewController {
-//    let vc = NSHostingController(rootView: StoreView())
+//import SwiftUI
+//import AppKit
 //
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.programID = "Store"
-    }
-//
-//    override func viewDidLayout() {
+//// TODO: Remove this?
+//class StoreViewController: AppViewController {
+////    let vc = NSHostingController(rootView: StoreView())
+////
+//    override func viewDidLoad() {
 //        super.viewDidLoad()
-//        vc.view.frame = view.bounds
+//        self.programID = "Store"
 //    }
-}
-
-struct StoreView: View {
-    var body: some View {
-        Color.gray.overlay {
-            Text("Hello")
-        }
-    }
-}
+////
+////    override func viewDidLayout() {
+////        super.viewDidLoad()
+////        vc.view.frame = view.bounds
+////    }
+//}
+//
+//struct StoreView: View {
+//    var body: some View {
+//        Color.gray.overlay {
+//            Text("Hello")
+//        }
+//    }
+//}

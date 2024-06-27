@@ -8,6 +8,13 @@ struct NewProgramParams: Equatable {
 }
 
 func promptForNewProgramDetails() async -> NewProgramParams? {
+    // Ensure creds
+    do {
+        _ = try await Credentials.getOrPromptForCreds()
+    } catch {
+        return nil
+    }
+
     #if os(iOS)
     guard let title = await prompt(question: "Choose a name for your app:", title: "Create App (1/2)"),
           let subtitle = await prompt(question: "Describe your app briefly:", title: "Create App (2/2)")

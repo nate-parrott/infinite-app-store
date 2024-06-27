@@ -118,7 +118,7 @@ class InfiniteWebView: WKWebView {
             Task {
                 do {
                     print("[LLMStream]: Prompting:\n\(prompt)")
-                    let llm = try await ChatGPT(credentials: .getOrPromptForCreds(), options: .init(model: .gpt35_turbo))
+                    let llm = try await Credentials.getOrPromptForCreds().smallLLM
                     var last: String?
                     for try await partial in llm.completeStreaming(prompt: [LLMMessage(role: .user, content: prompt)]) {
                         emit(partial.content)

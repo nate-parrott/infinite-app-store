@@ -160,7 +160,8 @@ struct ErrorView: View {
         #if os(iOS)
         self.contactDevSheet = .init(id: id, initialMsg: msg)
         #else
-        _ = getOrCreateContactDevWindow(id: id)
+        let win = getOrCreateContactDevWindow(id: id)
+        win.makeKeyAndOrderFront(nil)
         // HACK: Avoid race condition where thread isn't init'd before view appears
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             guard let thread = ContactDevThread.all.compactMap(\.value).first(where: { $0.program?.id == id }) else {

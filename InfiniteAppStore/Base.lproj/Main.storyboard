@@ -22,11 +22,9 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
-                                        <menuItem title="Update OpenAI Key" id="I8Z-dl-mvX">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        <menuItem title="Control Panel" keyEquivalent="," id="I8Z-dl-mvX">
                                             <connections>
-                                                <action selector="updateOpenAIKey:" target="Voe-Tx-rLC" id="tGc-nE-aq8"/>
+                                                <action selector="controlPanel:" target="Ady-hI-5gd" id="kZe-E7-xC2"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
@@ -61,70 +59,14 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="File" id="dMs-cI-mzQ">
+                            <menuItem title="Program" id="xYA-QK-Akc">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="File" id="bib-Uj-vzu">
+                                <menu key="submenu" title="Program" id="Oad-wa-NDV">
                                     <items>
-                                        <menuItem title="Regenerate App..." id="pEN-X7-6D1">
+                                        <menuItem title="Delete this Program..." id="Z5m-aD-3My">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="regenerate:" target="Ady-hI-5gd" id="Rx5-gH-yMv"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="New" keyEquivalent="n" id="Was-JA-tGl">
-                                            <connections>
-                                                <action selector="newDocument:" target="Ady-hI-5gd" id="4Si-XN-c54"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
-                                            <connections>
-                                                <action selector="openDocument:" target="Ady-hI-5gd" id="bVn-NM-KNZ"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Open Recent" id="tXI-mr-wws">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <menu key="submenu" title="Open Recent" systemMenu="recentDocuments" id="oas-Oc-fiZ">
-                                                <items>
-                                                    <menuItem title="Clear Menu" id="vNY-rz-j42">
-                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="clearRecentDocuments:" target="Ady-hI-5gd" id="Daa-9d-B3U"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                </items>
-                                            </menu>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
-                                        <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
-                                            <connections>
-                                                <action selector="performClose:" target="Ady-hI-5gd" id="HmO-Ls-i7Q"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Save…" keyEquivalent="s" id="pxx-59-PXV">
-                                            <connections>
-                                                <action selector="saveDocument:" target="Ady-hI-5gd" id="teZ-XB-qJY"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Save As…" keyEquivalent="S" id="Bw7-FT-i3A">
-                                            <connections>
-                                                <action selector="saveDocumentAs:" target="Ady-hI-5gd" id="mDf-zr-I0C"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Revert to Saved" keyEquivalent="r" id="KaW-ft-85H">
-                                            <connections>
-                                                <action selector="revertDocumentToSaved:" target="Ady-hI-5gd" id="iJ3-Pv-kwq"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="aJh-i4-bef"/>
-                                        <menuItem title="Page Setup…" keyEquivalent="P" id="qIS-W8-SiK">
-                                            <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
-                                            <connections>
-                                                <action selector="runPageLayout:" target="Ady-hI-5gd" id="Din-rz-gC5"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Print…" keyEquivalent="p" id="aTl-1u-JFS">
-                                            <connections>
-                                                <action selector="print:" target="Ady-hI-5gd" id="qaZ-4w-aoO"/>
+                                                <action selector="deleteApp:" target="Ady-hI-5gd" id="ElO-u8-U8J"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -690,7 +632,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="89" y="-149"/>
         </scene>
         <!--App Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -712,44 +654,6 @@
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="74" y="249"/>
-        </scene>
-        <!--Window Controller-->
-        <scene sceneID="QAf-mb-2XL">
-            <objects>
-                <windowController storyboardIdentifier="StoreWindowController" showSeguePresentationStyle="single" id="5Ma-1E-aaC" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="84e-kg-txs" customClass="AppNSWindow" customModule="InfiniteAppStore" customModuleProvider="target">
-                        <windowStyleMask key="styleMask" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="211" y="270" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1512" height="950"/>
-                        <view key="contentView" id="uFv-dI-QI2">
-                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </view>
-                        <connections>
-                            <outlet property="delegate" destination="5Ma-1E-aaC" id="ttu-LR-cPE"/>
-                        </connections>
-                    </window>
-                    <connections>
-                        <segue destination="jg3-5O-iaZ" kind="relationship" relationship="window.shadowedContentViewController" id="1y9-Vw-ILK"/>
-                    </connections>
-                </windowController>
-                <customObject id="b7C-dx-qAS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="617" y="-169"/>
-        </scene>
-        <!--Store View Controller-->
-        <scene sceneID="iIF-9m-xxg">
-            <objects>
-                <viewController id="jg3-5O-iaZ" customClass="StoreViewController" customModule="InfiniteAppStore" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="pF0-2p-lHp">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="pYR-Sh-spc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1229" y="112"/>
         </scene>
         <!--App View Controller-->
         <scene sceneID="hIz-AP-VOD">

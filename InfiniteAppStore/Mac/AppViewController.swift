@@ -62,6 +62,20 @@ class AppViewController: NSViewController {
         }
     }
 
+    @IBAction func deleteApp(_ sender: Any?) {
+        guard let id = programID else { return }
+        Task {
+            let prompt = PromptDialogModel(title: "Uninstall this program?", message: "Can't be undone!", cancellable: true, hasTextField: false)
+            let result = await prompt.run()
+            if !result.cancelled {
+                DispatchQueue.main.async {
+                    self.view.window?.close()
+                    AppStore.shared.model.programs.removeValue(forKey: id)
+                }
+            }
+        }
+    }
+
     private var mainView: NSHostingView<AppWindowContentView>? {
         didSet {
             oldValue?.removeFromSuperview()

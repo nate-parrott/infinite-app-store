@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5F0C14812C1A907700574D1E /* SwiftUI+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0C14802C1A907700574D1E /* SwiftUI+Convenience.swift */; };
+		5F22CB5C2C2D03820061B275 /* SettingsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F22CB5B2C2D03820061B275 /* SettingsWindow.swift */; };
 		5F2B55852C27BDD400BA44DF /* NewProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B55842C27BDD400BA44DF /* NewProgram.swift */; };
 		5F2B55892C27C62100BA44DF /* Scripting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B55882C27C62100BA44DF /* Scripting.swift */; };
 		5F7D90212C14FF130090D0C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D90202C14FF130090D0C7 /* AppDelegate.swift */; };
@@ -85,6 +86,7 @@
 
 /* Begin PBXFileReference section */
 		5F0C14802C1A907700574D1E /* SwiftUI+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Convenience.swift"; sourceTree = "<group>"; };
+		5F22CB5B2C2D03820061B275 /* SettingsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindow.swift; sourceTree = "<group>"; };
 		5F2B55842C27BDD400BA44DF /* NewProgram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProgram.swift; sourceTree = "<group>"; };
 		5F2B55882C27C62100BA44DF /* Scripting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scripting.swift; sourceTree = "<group>"; };
 		5F7D901D2C14FF130090D0C7 /* InfiniteAppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfiniteAppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -253,6 +255,7 @@
 				5F7F2FC42C1FCDFC008E16C7 /* ContactDevWindow.swift */,
 				5F7D904E2C153EBB0090D0C7 /* StoreViewController.swift */,
 				5F7D90222C14FF130090D0C7 /* AppViewController.swift */,
+				5F22CB5B2C2D03820061B275 /* SettingsWindow.swift */,
 				5FD58E3A2C1639EA0044E094 /* AppNSWindow.swift */,
 				5FD58E4A2C1683AA0044E094 /* FloatingSwiftUIWindow.swift */,
 			);
@@ -427,6 +430,7 @@
 				5F7F2FF82C1FD6FD008E16C7 /* AppView.swift in Sources */,
 				5FD58E2F2C1545ED0044E094 /* UI95.swift in Sources */,
 				5FD58E3B2C1639EA0044E094 /* AppNSWindow.swift in Sources */,
+				5F22CB5C2C2D03820061B275 /* SettingsWindow.swift in Sources */,
 				5FD58E492C167C8F0044E094 /* CSS.swift in Sources */,
 				5F7F2FEE2C1FD1E8008E16C7 /* WindowControlAction.swift in Sources */,
 				5F2B55892C27C62100BA44DF /* Scripting.swift in Sources */,
