@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5F0C14812C1A907700574D1E /* SwiftUI+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0C14802C1A907700574D1E /* SwiftUI+Convenience.swift */; };
 		5F22CB5C2C2D03820061B275 /* SettingsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F22CB5B2C2D03820061B275 /* SettingsWindow.swift */; };
+		5F22CB642C2E1ACF0061B275 /* InfiniteAppStoreStore.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F22CB632C2E1A7D0061B275 /* InfiniteAppStoreStore.json */; };
 		5F2B55852C27BDD400BA44DF /* NewProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B55842C27BDD400BA44DF /* NewProgram.swift */; };
 		5F2B55892C27C62100BA44DF /* Scripting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2B55882C27C62100BA44DF /* Scripting.swift */; };
 		5F7D90212C14FF130090D0C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7D90202C14FF130090D0C7 /* AppDelegate.swift */; };
@@ -87,9 +88,10 @@
 /* Begin PBXFileReference section */
 		5F0C14802C1A907700574D1E /* SwiftUI+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Convenience.swift"; sourceTree = "<group>"; };
 		5F22CB5B2C2D03820061B275 /* SettingsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindow.swift; sourceTree = "<group>"; };
+		5F22CB632C2E1A7D0061B275 /* InfiniteAppStoreStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = InfiniteAppStoreStore.json; sourceTree = "<group>"; };
 		5F2B55842C27BDD400BA44DF /* NewProgram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProgram.swift; sourceTree = "<group>"; };
 		5F2B55882C27C62100BA44DF /* Scripting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scripting.swift; sourceTree = "<group>"; };
-		5F7D901D2C14FF130090D0C7 /* InfiniteAppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfiniteAppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F7D901D2C14FF130090D0C7 /* Start Menu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Start Menu.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F7D90202C14FF130090D0C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F7D90222C14FF130090D0C7 /* AppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
 		5F7D90242C14FF140090D0C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -173,7 +175,7 @@
 		5F7D901E2C14FF130090D0C7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5F7D901D2C14FF130090D0C7 /* InfiniteAppStore.app */,
+				5F7D901D2C14FF130090D0C7 /* Start Menu.app */,
 				5F7F2FB52C1FCDBE008E16C7 /* InfiniteAppStoreiOS.app */,
 			);
 			name = Products;
@@ -272,6 +274,7 @@
 		5FD58E432C1661C00044E094 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				5F22CB632C2E1A7D0061B275 /* InfiniteAppStoreStore.json */,
 				5F7D90472C15280A0090D0C7 /* AppState.swift */,
 				5F7D90492C1529EA0090D0C7 /* ProgramGen.swift */,
 				5FD58E482C167C8F0044E094 /* CSS.swift */,
@@ -310,7 +313,7 @@
 				5FD58E3D2C163F500044E094 /* Swifter */,
 			);
 			productName = InfiniteAppStore;
-			productReference = 5F7D901D2C14FF130090D0C7 /* InfiniteAppStore.app */;
+			productReference = 5F7D901D2C14FF130090D0C7 /* Start Menu.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5F7F2FB42C1FCDBE008E16C7 /* InfiniteAppStoreiOS */ = {
@@ -384,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F7D90252C14FF140090D0C7 /* Assets.xcassets in Resources */,
+				5F22CB642C2E1ACF0061B275 /* InfiniteAppStoreStore.json in Resources */,
 				5FD58E372C1547E70044E094 /* MS Sans Serif Bold.ttf in Resources */,
 				5FD58E352C1547DD0044E094 /* MS Sans Serif.ttf in Resources */,
 				5F7D90282C14FF140090D0C7 /* Base in Resources */,
@@ -638,6 +642,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InfiniteAppStore/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Start Menu";
 				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Apps can use AppleScript to control other apps.";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Apps may use the camera";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -652,7 +657,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nateparrott.InfiniteAppStore;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Start Menu";
 				SUPPORTED_PLATFORMS = macosx;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -676,6 +681,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InfiniteAppStore/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Start Menu";
 				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Apps can use AppleScript to control other apps.";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Apps may use the camera";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -690,7 +696,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nateparrott.InfiniteAppStore;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Start Menu";
 				SUPPORTED_PLATFORMS = macosx;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -47,6 +47,7 @@ enum Prompts {
     Make your app look like a retro Windows 98 ap.
     A base stylesheet has been applied that makes programs look like Windows 98.
     Use ordinary HTML elements (input, textarea, select, button, overflow: scroll, etc), and they'll automatically get this styling.
+    Make sure it's responsive -- it should fill the viewport. You don't need a title h1.
     Do not reference external assets.
     You don't need to draw the window title bar; it will be drawn for you.
     \(mobileTheming)

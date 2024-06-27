@@ -23,10 +23,15 @@ struct AppState: Equatable, Codable {
         block(&program)
         programs[id] = program
     }
+
+    static var base: AppState {
+        let data = try! Data(contentsOf: Bundle.main.url(forResource: "InfiniteAppStoreStore", withExtension: "json")!)
+        return try! JSONDecoder().decode(Self.self, from: data)
+    }
 }
 
 class AppStore: DataStore<AppState> {
-    static let shared = AppStore(persistenceKey: "InfiniteAppStoreStore", defaultModel: .init(), queue: .main)
+    static let shared = AppStore(persistenceKey: "InfiniteAppStoreStore", defaultModel: .base, queue: .main)
 }
 
 extension Program {

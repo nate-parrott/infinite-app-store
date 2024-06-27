@@ -14,23 +14,6 @@ func isPreview() -> Bool {
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-//    @IBAction func showStoreVC(_ sender: Any?) {
-//        if let match = NSApplication.shared.windows.first(where: { $0.contentViewController is StoreViewController }) {
-//            match.makeKeyAndOrderFront(nil)
-//        } else {
-//            // Load "StoreWindowController" from storyboard
-//            let storyboard = NSStoryboard(name: "Main", bundle: nil)
-//            let storeVC = storyboard.instantiateController(withIdentifier: "StoreWindowController") as! NSWindowController
-//            storeVC.showWindow(nil)
-//        }
-//    }
-
-//    @IBAction func updateOpenAIKey(_ sender: Any?) {
-//        DefaultsKeys.openAIKey.stringValue = ""
-//        Task {
-//            _ = try? await OpenAICredentials.getOrPromptForCreds()
-//        }
-//    }
 
     @IBAction func controlPanel(_ sender: Any?) {
         showSettingsView()
